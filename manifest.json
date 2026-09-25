@@ -1,0 +1,21 @@
+{
+  "name": "NGA CIPA — Normas Gerais de Ação",
+  "short_name": "NGA CIPA",
+  "description": "Folder digital das Normas Gerais de Ação da Companhia Independente de Policiamento Ambiental (CIPA/PMRR).",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "id": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0E3B2E",
+  "theme_color": "#0E3B2E",
+  "categories": ["government", "education", "productivity"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

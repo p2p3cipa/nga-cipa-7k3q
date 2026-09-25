@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#0E3B2E">
+<meta name="description" content="Folder digital das Normas Gerais de Ação da Companhia Independente de Policiamento Ambiental (NGA/CIPA – PMRR): rotina administrativa, fluxo documental e serviço operacional terrestre e fluvial.">
+<title>NGA CIPA</title>
+
+<!-- PWA / funcionamento offline -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="application-name" content="NGA CIPA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NGA CIPA">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{
+  --verde-900:#0B2E24; --verde-800:#0E3B2E; --verde-700:#14543D;
+  --verde-500:#1E8B5A; --verde-300:#5FBF8B;
+  --azul-700:#12547E; --azul-500:#2586B8; --azul-300:#7FC4E3;
+  --bege:#F6EFE2; --areia:#EADDC4; --terra:#8A5A3B; --terra-claro:#B8835A;
+  --ouro:#FFD98A;
+  --branco:#FFFFFF; --tinta:#16231F; --tinta-suave:#4A5A54;
+  --alerta:#C4351B; --alerta-claro:#E8701F;
+  --sombra:0 10px 28px rgba(11,46,36,.12);
+  --raio:20px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;width:100%;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:86px}
+body{
+  background:var(--bege); color:var(--tinta);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px; line-height:1.6;
+}
+.wrap{max-width:640px;margin:0 auto;position:relative;background:var(--bege)}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+a{color:var(--azul-700)}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;
+  justify-content:flex-end;align-items:center;text-align:center;
+  padding:40px 22px calc(46px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,#0B2E24 0%,#12513A 38%,#1C6E4C 62%,#2E8B5E 100%);
+  overflow:hidden;
+}
+.rio{position:absolute;left:0;right:0;bottom:0;width:100%;height:44%;opacity:.95}
+.hero-inner{position:relative;z-index:2;width:100%}
+.brand{
+  width:112px;height:112px;margin:0 auto 22px;border-radius:50%;
+  background:var(--branco);padding:9px;
+  box-shadow:0 10px 26px rgba(0,0,0,.35);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.brand img{width:100%;height:100%;object-fit:contain}
+.eyebrow{
+  display:inline-block;color:#DFF3E5;font-size:11.5px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;
+  border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:7px 16px;
+  background:rgba(255,255,255,.08);
+}
+.hero h1{
+  margin:0 0 12px;color:var(--branco);font-size:clamp(29px,8.2vw,42px);
+  line-height:1.08;font-weight:800;letter-spacing:-.5px;text-shadow:0 3px 18px rgba(0,0,0,.3);
+}
+.hero h1 span{display:block;color:var(--ouro);letter-spacing:.14em;margin-top:6px}
+.minuta{
+  display:inline-flex;gap:8px;align-items:center;margin:0 0 16px;
+  background:rgba(255,217,138,.16);border:1px solid rgba(255,217,138,.55);color:var(--ouro);
+  font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 14px;border-radius:999px;
+}
+.lead{margin:0 auto 28px;max-width:380px;color:#E8F5EC;font-size:17px;font-style:italic}
+.ctas{display:flex;flex-direction:column;align-items:center;gap:12px}
+.cta{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  width:100%;max-width:340px;min-height:58px;padding:14px 24px;
+  border-radius:999px;background:var(--branco);color:var(--verde-800);
+  font-weight:800;font-size:15.5px;letter-spacing:.06em;text-decoration:none;
+  box-shadow:0 12px 26px rgba(0,0,0,.28);transition:transform .18s ease;
+}
+.cta.cta-2{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
+.cta:active{transform:scale(.96)}
+.cta .arrow{animation:bob 1.9s ease-in-out infinite;font-size:18px}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* ---------- BARRA FIXA: BUSCA + ATALHOS ---------- */
+.barra{
+  position:sticky;top:0;z-index:50;background:rgba(14,59,46,.97);
+  padding:10px 14px 8px;box-shadow:0 6px 18px rgba(0,0,0,.18);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.busca{display:flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:0 6px 0 16px}
+.busca input{
+  flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;
+  padding:12px 0;color:var(--tinta);
+}
+.busca .lupa{font-size:17px;opacity:.6}
+.busca button{width:36px;height:36px;border-radius:50%;font-size:17px;color:var(--tinta-suave);display:none}
+.busca.tem button{display:block}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:9px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips a{
+  flex:0 0 auto;text-decoration:none;color:#DFF3E5;font-size:13px;font-weight:700;
+  padding:6px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.28);white-space:nowrap;
+}
+.chips a:active{background:rgba(255,255,255,.15)}
+.res-busca{color:var(--ouro);font-size:13.5px;font-weight:700;padding:6px 4px 0;display:none}
+.res-busca.on{display:block}
+
+/* ---------- SEÇÕES ---------- */
+section{padding:52px 18px}
+.tag{
+  display:inline-block;font-size:11px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--verde-500);margin-bottom:10px;
+}
+h2{
+  margin:0 0 10px;font-size:clamp(25px,7vw,32px);line-height:1.15;
+  font-weight:800;letter-spacing:-.4px;color:var(--verde-800);
+}
+.sub{margin:0 0 22px;color:var(--tinta-suave);font-size:16px;font-weight:700;letter-spacing:.02em}
+.rule{width:54px;height:5px;border-radius:999px;background:linear-gradient(90deg,var(--verde-500),var(--azul-500));margin:0 0 16px}
+.sec-luz{background:var(--branco)}
+.sec-areia{background:linear-gradient(180deg,var(--bege) 0%,var(--areia) 100%)}
+.titulo:nth-of-type(odd){background:var(--branco)}
+
+/* Números */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:26px}
+.num{background:var(--branco);border-radius:16px;padding:14px 6px;text-align:center;box-shadow:var(--sombra)}
+.num b{display:block;font-size:26px;line-height:1.1;color:var(--verde-700);font-weight:900}
+.num span{font-size:12px;color:var(--tinta-suave);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+
+/* Cards de destaque */
+.cards{display:grid;gap:12px}
+.card{
+  display:flex;gap:14px;align-items:flex-start;text-decoration:none;color:inherit;
+  background:var(--branco);border:1px solid rgba(14,59,46,.09);
+  border-left:5px solid var(--verde-500);
+  border-radius:var(--raio);padding:16px 16px;box-shadow:var(--sombra);
+  transition:transform .15s ease;
+}
+.card:active{transform:scale(.98)}
+.card.c-azul{border-left-color:var(--azul-500)}
+.card.c-fogo{border-left-color:var(--alerta-claro)}
+.card.c-terra{border-left-color:var(--terra-claro)}
+.ico{
+  flex:0 0 46px;width:46px;height:46px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:23px;
+  background:linear-gradient(145deg,#EAF6EF,#D8EDE1);
+}
+.c-azul .ico{background:linear-gradient(145deg,#E7F3FA,#D2E9F5)}
+.c-fogo .ico{background:linear-gradient(145deg,#FDEEE2,#FADBC4)}
+.c-terra .ico{background:linear-gradient(145deg,#F6EEE3,#EADCC7)}
+.card h3{margin:0 0 3px;font-size:16.5px;font-weight:800;color:var(--verde-800)}
+.card p{margin:0;font-size:15px;color:var(--tinta-suave);line-height:1.5}
+.card .ref{display:inline-block;margin-top:6px;font-size:12px;font-weight:800;color:var(--verde-500);letter-spacing:.06em}
+
+/* Portaria */
+.portaria{background:var(--branco);border-radius:var(--raio);padding:20px 18px;box-shadow:var(--sombra);font-size:15.5px}
+.portaria h3{margin:0 0 4px;font-size:15px;letter-spacing:.06em;color:var(--verde-800)}
+.portaria .ementa{margin:0 0 14px;color:var(--tinta-suave);font-style:italic}
+.portaria ul{margin:0 0 14px;padding-left:18px;color:var(--tinta-suave)}
+.portaria li{margin-bottom:6px}
+.pend{background:#FFF4DB;color:#7A5410;border-radius:6px;padding:0 5px;font-weight:700;font-size:.92em;white-space:nowrap}
+
+/* Capítulos (acordeão) */
+details.cap{
+  background:var(--branco);border:1px solid rgba(14,59,46,.1);
+  border-radius:var(--raio);margin-bottom:12px;overflow:hidden;box-shadow:var(--sombra);
+}
+.titulo:nth-of-type(odd) details.cap{background:#FBFCFB}
+details.cap summary{
+  list-style:none;display:flex;align-items:center;gap:12px;cursor:pointer;
+  padding:16px 16px;min-height:64px;
+}
+details.cap summary::-webkit-details-marker{display:none}
+.cap-n{
+  flex:0 0 auto;font-size:11px;font-weight:900;letter-spacing:.08em;color:#fff;
+  background:var(--verde-700);border-radius:10px;padding:6px 8px;line-height:1.2;text-align:center;max-width:92px;
+}
+.cap-t{flex:1;font-weight:800;font-size:15px;color:var(--verde-800);line-height:1.35}
+.chev{
+  flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:#EDF5F0;
+  display:flex;align-items:center;justify-content:center;color:var(--verde-500);
+  font-size:13px;font-weight:900;transition:transform .28s ease;
+}
+details[open] > summary .chev{transform:rotate(180deg)}
+.cap-body{padding:2px 16px 16px;border-top:1px solid rgba(14,59,46,.08)}
+.artigo{padding:12px 0;border-bottom:1px dashed rgba(14,59,46,.13);scroll-margin-top:96px}
+.artigo:last-child{border-bottom:0}
+.artigo.alvo{animation:alvo 2.4s ease}
+@keyframes alvo{0%,40%{background:#FFF4DB}100%{background:transparent}}
+.artigo p{margin:0 0 7px;font-size:15.5px;line-height:1.58}
+.artigo .art b{color:var(--verde-700)}
+.artigo .par{padding-left:12px;border-left:3px solid var(--verde-300)}
+.artigo .par b{color:var(--verde-700)}
+.artigo .inc{padding-left:14px;color:#26352F}
+.artigo .ali{padding-left:30px;color:var(--tinta-suave);font-size:15px}
+.artigo .lnk{
+  display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:var(--verde-500);
+  text-decoration:none;padding:2px 0;
+}
+.secao{
+  margin:18px 0 4px;font-size:14.5px;color:var(--azul-700);font-weight:800;
+  padding:8px 12px;background:#EEF6FA;border-radius:10px;
+}
+.secao span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:block;color:var(--azul-500)}
+.titulo > .artigo{background:var(--branco);border-radius:16px;padding:14px 16px;margin-bottom:10px;border:0;box-shadow:0 4px 14px rgba(11,46,36,.07)}
+mark{background:#FFE08A;color:inherit;border-radius:3px;padding:0 1px}
+.oculto{display:none!important}
+.expandir{display:flex;justify-content:flex-end;margin:-6px 0 12px}
+.expandir button{font-size:13px;font-weight:800;color:var(--verde-500);padding:6px 4px;letter-spacing:.04em}
+
+/* Figuras */
+.fig{margin:14px 0 8px;padding:14px;background:#F4F8F6;border-radius:16px;border:1px solid rgba(14,59,46,.08)}
+.fig figcaption{margin-top:10px;font-size:12.5px;color:var(--tinta-suave);font-style:italic;text-align:center}
+.org{display:flex;flex-direction:column;align-items:center}
+.org-no{
+  background:var(--verde-800);color:#fff;border-radius:12px;padding:9px 14px;
+  font-size:14px;font-weight:800;text-align:center;line-height:1.3;
+}
+.org-top{background:var(--verde-900);box-shadow:0 0 0 3px var(--ouro)}
+.org-em{background:var(--verde-700)}
+.org-l{width:2px;height:14px;background:var(--verde-300)}
+.org-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%}
+.org-grid.org-3{grid-template-columns:repeat(3,1fr)}
+.org-s{background:var(--branco);color:var(--verde-800);border:2px solid var(--verde-500);font-size:11.5px;font-weight:700;padding:8px 4px}
+.org-s b{display:block;font-size:15px}
+.org-sub{display:block;margin-top:5px;font-size:10.5px;background:#E7F3FA;color:var(--azul-700);border-radius:6px;padding:2px 3px}
+.org-pel{background:var(--azul-700);font-size:13px;padding:9px 4px}
+.flx{list-style:none;margin:0;padding:0;counter-reset:p}
+.flx li{
+  position:relative;background:var(--branco);border-radius:12px;padding:10px 12px;margin:0 0 16px;
+  font-size:14.5px;line-height:1.45;border:1px solid rgba(14,59,46,.12);
+}
+.flx li:not(:last-child)::after{
+  content:"";position:absolute;left:50%;bottom:-15px;width:2px;height:14px;background:var(--verde-300);
+}
+.flx-ini{background:var(--verde-800)!important;color:#fff;font-weight:700}
+.flx-fim{background:#E4F6EC!important;border-color:#2FA46B!important;font-weight:700;color:var(--verde-700)}
+.flx-q{border:2px dashed var(--azul-500)!important;font-weight:800;color:var(--azul-700)}
+.flx-alt{margin-top:8px;font-weight:500;color:var(--tinta);font-size:13.5px;background:#F4F8F6;border-radius:8px;padding:8px 10px}
+.sim,.nao{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:1px 7px;margin-right:4px;color:#fff}
+.sim{background:#2FA46B}.nao{background:var(--alerta)}
+.tab{display:grid;gap:8px}
+.tab-row{display:grid;grid-template-columns:1fr 1fr 2fr;gap:8px;background:var(--branco);border-radius:10px;padding:10px 12px;font-size:14px}
+.tab-2 .tab-row{grid-template-columns:1fr 2fr}
+.tab-h{background:var(--verde-800);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.tab-row span:first-child{font-weight:800;color:var(--verde-800)}
+.tab-h span:first-child{color:#fff}
+@media (max-width:480px){
+  .tab-h{display:none}
+  .tab-row,.tab-2 .tab-row{grid-template-columns:1fr;gap:3px}
+  .tab-row span[data-l]:not(:first-child)::before{content:attr(data-l) ": ";font-weight:700;color:var(--tinta-suave);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+  .org-grid{grid-template-columns:repeat(2,1fr)}
+}
+.areas{display:grid;gap:10px}
+.area{background:var(--branco);border-radius:12px;padding:12px 14px;border-left:5px solid var(--azul-500)}
+.area.a-int{border-left-color:var(--verde-500)}
+.area h5{margin:0 0 6px;font-size:16px;color:var(--verde-800)}
+.area p{margin:0 0 6px;font-size:14px}
+
+/* Notas / pendências / anexos */
+details.bloco{background:var(--branco);border-radius:var(--raio);margin-bottom:12px;box-shadow:var(--sombra);overflow:hidden}
+details.bloco summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px;font-weight:800;color:var(--verde-800);min-height:60px}
+details.bloco summary::-webkit-details-marker{display:none}
+details.bloco summary .ico{flex:0 0 40px;width:40px;height:40px;font-size:20px}
+details.bloco summary .t{flex:1}
+.bloco-body{padding:0 16px 16px;font-size:14px;color:var(--tinta-suave)}
+.notas{margin:0;padding-left:22px}
+.notas li{margin-bottom:8px}
+.anexos{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.anexos a{
+  display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--tinta);
+  background:var(--branco);border-radius:16px;padding:14px 14px;box-shadow:0 4px 14px rgba(11,46,36,.07);
+}
+.anexos .letra{
+  flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:var(--verde-700);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:900;
+}
+.anexos .txt{flex:1;font-size:14.5px;font-weight:600;line-height:1.4}
+.anexos .txt small{display:block;color:var(--tinta-suave);font-weight:500;font-size:12.5px}
+.anexos .ir{color:var(--verde-500);font-weight:900}
+
+/* QR code */
+.sec-qr{background:linear-gradient(180deg,var(--azul-700) 0%,var(--verde-700) 100%);color:#fff;text-align:center}
+.sec-qr h2{color:#fff}
+.sec-qr .tag{color:var(--azul-300)}
+.sec-qr .rule{margin:0 auto 16px;background:linear-gradient(90deg,var(--azul-300),var(--verde-300))}
+.sec-qr .sub{color:#DCEEF7;font-weight:500}
+.qr-box{background:#fff;border-radius:26px;padding:22px 18px;box-shadow:0 16px 36px rgba(0,0,0,.24);color:var(--tinta);max-width:380px;margin:0 auto}
+.qr-img{width:100%;max-width:260px;margin:0 auto;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.qr-img canvas{width:100%;height:auto;image-rendering:pixelated}
+.qr-aviso{font-size:14px;color:var(--tinta-suave);background:#FDF3E6;border-radius:14px;padding:14px}
+.qr-url{margin:12px 0 16px;font-size:12.5px;color:var(--tinta-suave);word-break:break-all}
+.qr-btns{display:grid;gap:10px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;
+  border-radius:999px;font-weight:900;font-size:14.5px;letter-spacing:.04em;text-decoration:none;
+  transition:transform .15s ease;
+}
+.btn:active{transform:scale(.97)}
+.btn-v{background:linear-gradient(135deg,var(--verde-500),var(--azul-700));color:#fff}
+.btn-c{background:#EEF4F1;color:var(--verde-800)}
+
+/* Instalar / offline */
+.sec-off{background:linear-gradient(180deg,var(--areia) 0%,var(--bege) 100%);text-align:center}
+.off-box{background:var(--branco);border:1px solid rgba(14,59,46,.1);border-radius:24px;padding:26px 20px;box-shadow:var(--sombra)}
+.off-ico{font-size:44px;line-height:1;margin-bottom:8px}
+.off-box h2{font-size:clamp(22px,6.4vw,27px);margin-bottom:8px}
+.off-box p{margin:0 auto 20px;max-width:360px;color:var(--tinta-suave);font-size:15.5px}
+.btn-inst{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;max-width:340px;min-height:62px;border-radius:999px;
+  background:linear-gradient(135deg,var(--verde-500),var(--azul-700));color:#fff;
+  font-size:15.5px;font-weight:900;letter-spacing:.04em;box-shadow:0 12px 26px rgba(14,59,46,.28);
+}
+.status{
+  display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 16px;border-radius:999px;
+  background:#EAF6EF;color:#14543D;font-size:14px;font-weight:700;opacity:0;transition:opacity .4s ease;
+}
+.status.on{opacity:1}
+.status.esperando{background:#FDF3E6;color:#8A5A10}
+.sheet{
+  position:fixed;inset:0;z-index:120;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(11,46,36,.6);opacity:0;pointer-events:none;transition:opacity .28s ease;
+}
+.sheet.show{opacity:1;pointer-events:auto}
+.sheet-card{
+  width:100%;max-width:640px;background:var(--branco);text-align:left;
+  border-radius:26px 26px 0 0;padding:26px 22px calc(28px + env(safe-area-inset-bottom));
+  transform:translateY(24px);transition:transform .3s ease;
+}
+.sheet.show .sheet-card{transform:none}
+.sheet-card h3{margin:0 0 6px;font-size:21px;font-weight:800;color:var(--verde-800)}
+.sheet-card > p{margin:0 0 18px;color:var(--tinta-suave);font-size:15.5px}
+.passos{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:12px}
+.passos li{display:flex;gap:13px;align-items:center;font-size:15.5px;font-weight:600}
+.passos b{flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--verde-500);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.fechar{width:100%;min-height:54px;border-radius:999px;background:var(--verde-800);color:#fff;font-weight:800}
+
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translate(-50%,24px);
+  background:var(--verde-800);color:#fff;padding:13px 22px;border-radius:999px;
+  font-size:14.5px;font-weight:700;box-shadow:0 10px 26px rgba(0,0,0,.3);
+  opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;z-index:99;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.topo{
+  position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:60;
+  width:48px;height:48px;border-radius:50%;background:var(--verde-800);color:#fff;font-size:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .25s ease;
+}
+.topo.on{opacity:1;pointer-events:auto}
+footer{
+  background:var(--verde-900);color:#8FB3A3;text-align:center;
+  padding:26px 20px calc(30px + env(safe-area-inset-bottom));font-size:13px;line-height:1.7;
+}
+footer strong{color:#D7EADF;display:block;font-size:14px;letter-spacing:.08em}
+footer .lema{font-style:italic;color:#7FA795;margin-top:4px}
+
+/* Cartaz para impressão (QR) */
+#cartaz{display:none}
+@media print{
+  body.print-cartaz .wrap, body.print-cartaz .toast, body.print-cartaz .topo, body.print-cartaz .sheet{display:none!important}
+  body.print-cartaz{background:#fff}
+  body.print-cartaz #cartaz{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    min-height:96vh;padding:10mm;color:#0E3B2E;
+  }
+  #cartaz .c-brasao{width:40mm;height:40mm;margin-bottom:6mm}
+  #cartaz .c-org{font-size:11pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0}
+  #cartaz h1{font-size:30pt;margin:6mm 0 2mm;line-height:1.1}
+  #cartaz h1 span{display:block;font-size:20pt;letter-spacing:.2em;color:#14543D}
+  #cartaz .c-minuta{font-size:11pt;font-weight:800;letter-spacing:.14em;border:1.5px solid #0E3B2E;border-radius:99px;padding:1mm 5mm;margin:2mm 0 8mm}
+  #cartaz .c-qr{width:95mm;height:95mm;border:2mm solid #0E3B2E;border-radius:6mm;padding:4mm}
+  #cartaz .c-qr img{width:100%;height:100%;image-rendering:pixelated}
+  #cartaz .c-inst{font-size:16pt;font-weight:800;margin:8mm 0 2mm}
+  #cartaz .c-url{font-size:10pt;color:#4A5A54;word-break:break-all}
+  #cartaz .c-lema{margin-top:8mm;font-style:italic;font-size:11pt}
+  body:not(.print-cartaz) .barra, body:not(.print-cartaz) .hero .ctas, body:not(.print-cartaz) .sec-qr,
+  body:not(.print-cartaz) .sec-off, body:not(.print-cartaz) .topo{display:none!important}
+  body:not(.print-cartaz) .hero{min-height:auto;background:#0E3B2E;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body:not(.print-cartaz) details > *{display:block}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+@media (min-width:600px){ section{padding:62px 28px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ PRIMEIRA TELA ============ -->
+  <header class="hero" id="topo">
+    <svg class="rio" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 110 C60 96 120 124 190 108 C260 92 330 118 400 102 L400 200 L0 200Z" fill="#0F4A34" opacity=".6"/>
+      <path d="M0 140 C80 122 140 150 210 136 C280 122 340 146 400 134 L400 200 L0 200Z" fill="#14543D" opacity=".85"/>
+      <path d="M0 164 C70 152 150 176 230 162 C300 150 350 168 400 160 L400 200 L0 200Z" fill="#12547E" opacity=".75"/>
+      <path d="M0 182 C90 172 160 190 240 180 C310 172 350 186 400 180 L400 200 L0 200Z" fill="#2586B8" opacity=".55"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="brand"><img src="data:image/jpeg;base64,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" alt="Brasão da CIPA — Polícia Militar de Roraima" width="112" height="112"></div>
+      <span class="eyebrow">PMRR · CPC · CIPA</span>
+      <h1>NORMAS GERAIS DE AÇÃO <span>NGA / CIPA</span></h1>
+      <div class="minuta">📝 Minuta · Setembro de 2026</div>
+      <p class="lead">Rotina administrativa, fluxo documental e serviço operacional terrestre e fluvial da Companhia Independente de Policiamento Ambiental.</p>
+      <div class="ctas">
+        <a class="cta" href="#resumo">CONSULTAR AS NORMAS <span class="arrow">↓</span></a>
+        <a class="cta cta-2" href="#compartilhar">▦ QR CODE DO FOLDER</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ BARRA FIXA ============ -->
+  <nav class="barra" aria-label="Busca e atalhos">
+    <label class="busca" id="busca-box">
+      <span class="lupa" aria-hidden="true">🔎</span>
+      <input id="busca" type="search" inputmode="search" autocomplete="off" placeholder="Buscar: nº do artigo ou palavra (ex.: 64, rádio)" aria-label="Buscar nas NGA">
+      <button type="button" id="limpar" aria-label="Limpar busca">✕</button>
+    </label>
+    <div class="res-busca" id="res-busca" role="status"></div>
+    <div class="chips">
+      <a href="#resumo">Resumo</a>
+      <a href="#tit-1">Organização</a>
+      <a href="#tit-2">Fluxo documental</a>
+      <a href="#tit-3">Disposições gerais</a>
+      <a href="#tit-4">Terrestre</a>
+      <a href="#tit-5">Fluvial</a>
+      <a href="#tit-6">Disposições finais</a>
+      <a href="#anexos">Anexos</a>
+      <a href="#compartilhar">QR Code</a>
+    </div>
+  </nav>
+
+  <!-- ============ RESUMO ============ -->
+  <section id="resumo" class="sec-areia">
+    <span class="tag">Visão geral</span>
+    <h2>AS NGA EM RESUMO</h2>
+    <div class="rule"></div>
+    <div class="nums">
+      <div class="num"><b>94</b><span>artigos</span></div>
+      <div class="num"><b>2</b><span>partes</span></div>
+      <div class="num"><b>6</b><span>títulos</span></div>
+      <div class="num"><b>20</b><span>capítulos</span></div>
+    </div>
+    <div class="cards">
+      <a class="card" href="#art-4"><div class="ico">🛡️</div><div><h3>Competências da CIPA</h3><p>Policiamento ostensivo ambiental em todo o Estado, nos quinze Municípios, por terra e por rio.</p><span class="ref">ART. 4º →</span></div></a>
+      <a class="card c-azul" href="#art-5"><div class="ico">🏛️</div><div><h3>Estrutura</h3><p>Comando, Subcomando, Estado-Maior (P-1, P-2, P-3/SAO e FA) e três Pelotões com três Grupos cada.</p><span class="ref">ART. 5º →</span></div></a>
+      <a class="card c-terra" href="#art-15"><div class="ico">🕢</div><div><h3>Expediente e escalas</h3><p>Expediente das 7h30 às 13h; viaturas em 24h × 96h; Guarda/Permanência em 24h × 72h.</p><span class="ref">ART. 15 →</span></div></a>
+      <a class="card c-azul" href="#art-24"><div class="ico">🛰️</div><div><h3>Demandas externas</h3><p>P-2 verifica no monitoramento satelital → P-3 planeja (OM/OPO) → P-1 escala → SAO analisa → Comando responde.</p><span class="ref">ART. 24 →</span></div></a>
+      <a class="card" href="#art-45"><div class="ico">⏱️</div><div><h3>Início do serviço</h3><p>Chegada à Base no mínimo 15 minutos antes do horário da escala, com acautelamento do material.</p><span class="ref">ART. 45 →</span></div></a>
+      <a class="card c-fogo" href="#art-59"><div class="ico">⚖️</div><div><h3>Uso diferenciado da força</h3><p>Somente a força necessária; arma de fogo contra pessoa apenas em legítima defesa contra perigo iminente de morte ou lesão grave.</p><span class="ref">ART. 59 →</span></div></a>
+      <a class="card c-terra" href="#art-64"><div class="ico">🚓</div><div><h3>Guarnição terrestre</h3><p>Mínimo de 4 policiais militares — vedado patrulhar com efetivo inferior.</p><span class="ref">ART. 64 →</span></div></a>
+      <a class="card c-azul" href="#art-82"><div class="ico">🚤</div><div><h3>Ações fluviais</h3><p>Duas embarcações nas abordagens: L1 aborda e L2 faz a segurança do perímetro, sem atracar ao mesmo tempo.</p><span class="ref">ART. 82 →</span></div></a>
+    </div>
+  </section>
+
+  <!-- ============ PORTARIA ============ -->
+  <section class="sec-luz" id="portaria">
+    <span class="tag">Preâmbulo</span>
+    <h2>PORTARIA DE APROVAÇÃO</h2>
+    <div class="rule"></div>
+    <div class="portaria">
+      <h3>PORTARIA Nº <span class="pend">[A DEFINIR]</span>, DE <span class="pend">[A DEFINIR]</span></h3>
+      <p class="ementa">Regula os procedimentos administrativos e aprova as Normas Gerais de Ação da Companhia Independente de Policiamento Ambiental – CIPA/PMRR, e dá outras providências.</p>
+      <p>O <b>Comandante de Policiamento da Capital – CPC</b>, no uso de suas atribuições, considerando:</p>
+      <ul>
+        <li>o Processo SEI nº <span class="pend">[A DEFINIR]</span>;</li>
+        <li>a Lei Complementar nº 081/2004 e o Decreto nº 10.945-E/2010, que criaram e implantaram a CIPA;</li>
+        <li>o Decreto nº 41.504-E/2026, que aprovou o Quadro de Organização da PMRR;</li>
+        <li>a Portaria nº 1592/PMRR/QCG/DPL/2023 (guarnição, armamento e equipamento da CIPA);</li>
+        <li>a necessidade de padronizar a rotina administrativa e o serviço operacional da Companhia,</li>
+      </ul>
+      <p style="margin:0"><b>RESOLVE</b> regular a rotina administrativa e aprovar as Normas Gerais de Ação da CIPA, na forma a seguir.</p>
+    </div>
+  </section>
+
+  <!-- ============ TEXTO DAS NGA ============ -->
+  <div id="normas">
+    <div class="expandir" style="padding:14px 18px 0;margin:0"><button type="button" id="expandir">⊕ ABRIR TODOS OS CAPÍTULOS</button></div>
+<section class="titulo" id="tit-1"><span class="tag">PARTE I – ADMINISTRATIVA</span><h2>TÍTULO I</h2><div class="rule"></div><p class="sub">DAS DISPOSIÇÕES PRELIMINARES E DA ORGANIZAÇÃO</p>
+<details class="cap" id="cap-1"><summary><span class="cap-n">CAPÍTULO I</span><span class="cap-t">DA FINALIDADE E DAS COMPETÊNCIAS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-1">
+<p class="art"><b>Art. 1º</b> Estas Normas Gerais de Ação (NGA) regulam a rotina administrativa, as atribuições das seções, o fluxo documental e o serviço operacional da Companhia Independente de Policiamento Ambiental (CIPA).</p>
+</div>
+<div class="artigo" id="art-2">
+<p class="art"><b>Art. 2º</b> Policiamento ambiental é o tipo específico de policiamento ostensivo realizado com o intuito de preservar a ordem pública em ações relacionadas à proteção da biodiversidade e à manutenção do ambiente propício à vida em todas as suas formas.</p>
+<p class="par"><b>Parágrafo único.</b> “Prevenir o crime ambiental é impedir o dano ambiental, ação mais eficiente do que recuperá-lo, dada a dificuldade de retornar o ambiente danificado à sua situação original.”</p>
+</div>
+<div class="artigo" id="art-3">
+<p class="art"><b>Art. 3º</b> A CIPA é a unidade especializada da Polícia Militar de Roraima (PMRR), inserida na estrutura do Comando de Policiamento da Capital (CPC), responsável pelo policiamento ostensivo ambiental em todo o território estadual, com atribuição nos quinze Municípios, e integra o serviço de policiamento da 2ª Malha.</p>
+</div>
+<div class="artigo" id="art-4">
+<p class="art"><b>Art. 4º</b> Compete à CIPA:</p>
+<p class="inc">I – realizar o policiamento ostensivo ambiental em todo o território do Estado;</p>
+<p class="inc">II – prevenir e reprimir crimes contra a fauna, a flora, os recursos hídricos e os demais recursos naturais;</p>
+<p class="inc">III – executar operações terrestres e fluviais;</p>
+<p class="inc">IV – atuar de forma integrada com órgãos ambientais, forças de segurança pública e instituições de fiscalização;</p>
+<p class="inc">V – apoiar ações de combate ao garimpo ilegal, ao desmatamento, às queimadas, à mineração clandestina, à exploração florestal irregular e ao tráfico de animais silvestres;</p>
+<p class="inc">VI – realizar o resgate de fauna silvestre em situação de risco ou vulnerabilidade;</p>
+<p class="inc">VII – desenvolver ações de educação ambiental e de prevenção;</p>
+<p class="inc">VIII – produzir informações de interesse da atividade de inteligência relacionadas aos crimes ambientais;</p>
+<p class="inc">IX – fortalecer a presença do Estado em áreas estratégicas e de difícil acesso.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-2"><summary><span class="cap-n">CAPÍTULO II</span><span class="cap-t">DA ESTRUTURA ORGANIZACIONAL</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-5">
+<p class="art"><b>Art. 5º</b> A CIPA compõe-se de Comando, Subcomando, Estado-Maior e três Pelotões operacionais, estes divididos em três Grupos cada:</p>
+<p class="inc">I – Comando;</p>
+<p class="inc">II – Subcomando;</p>
+<p class="inc">III – Estado-Maior, composto pela Seção de Pessoal (P-1), pela Seção de Inteligência (P-2), pela Seção de Planejamento, Operações e Instrução (P-3), à qual se subordina a Subseção de Análise Operacional (SAO), e pela Fiscalização Administrativa (FA);</p>
+<p class="inc">IV – 1º, 2º e 3º Pelotões, cada um com 1º, 2º e 3º Grupos.</p>
+<p class="par"><b>Parágrafo único.</b> A P-2 e a P-3 constam do Quadro de Organização como seção única (P-2/P-3), mas funcionam de forma distinta no âmbito interno da Companhia.</p>
+<figure class="fig">
+  <div class="org">
+    <div class="org-no org-top">Comando da CIPA</div>
+    <div class="org-l"></div>
+    <div class="org-no">Subcomando</div>
+    <div class="org-l"></div>
+    <div class="org-no org-em">Estado-Maior</div>
+    <div class="org-l"></div>
+    <div class="org-grid">
+      <div class="org-no org-s"><b>P-1</b>Pessoal</div>
+      <div class="org-no org-s"><b>P-2</b>Inteligência</div>
+      <div class="org-no org-s"><b>P-3</b>Operações<span class="org-sub">Subseção SAO</span></div>
+      <div class="org-no org-s"><b>FA</b>Fiscalização Administrativa</div>
+    </div>
+    <div class="org-l"></div>
+    <div class="org-grid org-3">
+      <div class="org-no org-pel">1º Pelotão</div>
+      <div class="org-no org-pel">2º Pelotão</div>
+      <div class="org-no org-pel">3º Pelotão</div>
+    </div>
+  </div>
+  <figcaption>Figura 1 – Organograma da Companhia Independente de Policiamento Ambiental – CIPA.</figcaption>
+</figure>
+</div>
+<div class="artigo" id="art-6">
+<p class="art"><b>Art. 6º</b> Os cargos de comando e chefia da CIPA são exercidos pelos policiais militares nomeados por portarias específicas, em consonância com a legislação vigente.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-3"><summary><span class="cap-n">CAPÍTULO III</span><span class="cap-t">DAS ATRIBUIÇÕES</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-7">
+<p class="art"><b>Art. 7º</b> Compete ao Comandante da CIPA:</p>
+<p class="inc">I – manter-se inteirado de todas as demandas e assuntos pertinentes à Unidade;</p>
+<p class="inc">II – representar a Unidade em reuniões e deliberações junto ao CPC e ao Quartel do Comando-Geral (QCG);</p>
+<p class="inc">III – representar a Polícia Militar em encontros cuja temática seja o meio ambiente, bem como em reuniões de planejamento operacional ou de apoio junto aos órgãos ambientais solicitantes;</p>
+<p class="inc">IV – presidir reuniões semanais com seu Estado-Maior para alinhamentos internos;</p>
+<p class="inc">V – exarar os despachos iniciais nas demandas recebidas e, concluída a tramitação interna, remeter os documentos ao órgão externo solicitante, dentro da natureza operacional da Unidade;</p>
+<p class="inc">VI – decidir o encaminhamento final das demandas externas, com resposta ao órgão demandante ou conclusão e arquivamento do processo;</p>
+<p class="inc">VII – resolver os casos omissos destas NGA.</p>
+</div>
+<div class="artigo" id="art-8">
+<p class="art"><b>Art. 8º</b> O Subcomandante é o principal auxiliar e o substituto imediato do Comandante, seu intermediário na expedição das ordens relativas à disciplina, à instrução e aos serviços gerais, cuja execução lhe cumpre fiscalizar, incumbindo-lhe:</p>
+<p class="inc">I – encaminhar ao Comandante, com as informações necessárias, os documentos que dependam de sua decisão;</p>
+<p class="inc">II – levar ao conhecimento do Comandante, depois de apuradas, as ocorrências que não lhe caiba resolver;</p>
+<p class="inc">III – dar conhecimento ao Comandante das providências adotadas por iniciativa própria;</p>
+<p class="inc">IV – assinar documentos e tomar providências de caráter urgente na ausência ou no impedimento ocasional do Comandante, dando-lhe conhecimento na primeira oportunidade;</p>
+<p class="inc">V – zelar pela conduta civil e militar dos oficiais e das praças da Companhia;</p>
+<p class="inc">VI – supervisionar o cumprimento das normas internas e, principalmente, a gestão e o controle do armamento e da munição da Companhia.</p>
+</div>
+<div class="artigo" id="art-9">
+<p class="art"><b>Art. 9º</b> O Chefe do Estado-Maior é o responsável pela coordenação das seções do Estado-Maior, incumbindo-lhe:</p>
+<p class="inc">I – coordenar e integrar os trabalhos da P-1, da P-2, da P-3, da Subseção de Análise Operacional e da Fiscalização Administrativa;</p>
+<p class="inc">II – encaminhar ao Subcomandante e ao Comandante, com as informações necessárias, os documentos das seções que dependam de decisão superior;</p>
+<p class="inc">III – fiscalizar a execução, pelas seções, das ordens do Comando;</p>
+<p class="inc">IV – responder pelas chefias que lhe são subordinadas nas ausências de seus titulares, por motivo de férias ou afastamentos.</p>
+</div>
+<div class="artigo" id="art-10">
+<p class="art"><b>Art. 10.</b> Compete à P-1 a gestão de pessoal da Companhia, em especial:</p>
+<p class="inc">I – confeccionar as escalas de serviço de qualquer natureza – policiamento ordinário, serviço voluntário, missões, eventos sociais, formaturas e qualquer outra atividade reconhecida como ato de serviço;</p>
+<p class="inc">II – manter atualizados os sistemas institucionais de recursos humanos;</p>
+<p class="inc">III – registrar e arquivar em pastas individuais as alterações de pessoal em geral;</p>
+<p class="inc">IV – verificar a disponibilidade de efetivo para o cumprimento das demandas oriundas da Seção de Planejamento (P-3).</p>
+</div>
+<div class="artigo" id="art-11">
+<p class="art"><b>Art. 11.</b> Compete à P-2 o levantamento de dados e a análise dos sistemas de monitoramento satelital disponíveis na CIPA, que subsidiam a decisão quanto à operacionalização da ocorrência ou quanto à improcedência da denúncia de crime ambiental, cabendo-lhe:</p>
+<p class="inc">I – criar o processo SEI de cada demanda externa recebida;</p>
+<p class="inc">II – levantar as informações nos sistemas de monitoramento;</p>
+<p class="inc">III – despachar à P-3 as demandas cuja procedência for confirmada;</p>
+<p class="inc">IV – emitir parecer ou relatório que comprove a improcedência da demanda, sugerindo ao Comando o seu arquivamento.</p>
+<p class="par"><b>§ 1º</b> São fontes internas de demandas da P-2 os alertas oriundos dos sistemas governamentais de monitoramento de queimadas e de desmatamento via satélite.</p>
+<p class="par"><b>§ 2º</b> São fontes externas de demandas da P-2:</p>
+<p class="inc">I – as denúncias feitas pelo cidadão diretamente na Companhia;</p>
+<p class="inc">II – as solicitações de verificação ou de diligência oriundas do Ministério Público e de outros órgãos de meio ambiente.</p>
+</div>
+<div class="artigo" id="art-12">
+<p class="art"><b>Art. 12.</b> Compete à P-3 o planejamento e a formalização da documentação necessária ao emprego da tropa, por meio de:</p>
+<p class="inc">I – Ordem de Missão (OM): ampara a execução de policiamento especializado ou de operações em outros Municípios de Roraima e deve ser sempre intitulada com o nome da operação específica, observado o seguinte:</p>
+<p class="ali">a) em operações regulares de longa duração e com várias frentes de atuação, expede-se uma Ordem de Missão Geral e, para cada frente, uma Ordem de Missão específica, que determina o local de atuação e referenda a Ordem de Missão Geral;</p>
+<p class="ali">b) a Ordem de Missão deve especificar obrigatoriamente a modalidade da missão, terrestre ou fluvial;</p>
+<p class="inc">II – Nota de Instrução (NI): ampara a realização de treinamentos e instruções para qualificação ou orientação da tropa;</p>
+<p class="inc">III – Ordem de Policiamento Ostensivo (OPO): ampara o policiamento extraordinário do efetivo da Unidade no âmbito do CPC, na área de atuação prevista no art. 4º destas NGA; deve ser sempre intitulada com o nome da operação específica e, sempre que possível, referendar a documentação demandante;</p>
+<p class="inc">IV – Ordem de Serviço (OS): ampara o policial da Unidade designado para o cumprimento de missões institucionais não operacionais, pontuais ou duradouras, tais como reuniões, encontros e participação em comissões;</p>
+<p class="inc">V – Ordem de Operações (OOp): utilizada complementarmente às Ordens de Missão, às Ordens de Policiamento ou às Ordens de Serviço expedidas por outras unidades, quando nelas não estiver determinada ou explícita a atuação da CIPA, para determinar ou delimitar a atuação dos policiais da Companhia, sendo obrigatório referendar o documento originário que a demandou.</p>
+<p class="par"><b>Parágrafo único.</b> A Subseção de Análise Operacional (SAO), subordinada à P-3, é chefiada exclusivamente por um oficial possuidor do Curso de Fiscal Ambiental, incumbido da análise de todo o arcabouço documental das infrações lavradas pelos policiais em operações ou no policiamento ordinário, condição indispensável à chancela da validade das multas aplicadas, encaminhando ao final relatório analítico conclusivo ao Comando.</p>
+</div>
+<div class="artigo" id="art-13">
+<p class="art"><b>Art. 13.</b> Compete à Fiscalização Administrativa (FA) a operacionalização da logística e a manutenção predial de toda a Unidade, respondendo ainda pelo material bélico, pela frota e por todo o material permanente e de consumo da Companhia.</p>
+<p class="par"><b>Parágrafo único.</b> Além do Chefe da Fiscalização Administrativa, a seção contará com os seguintes auxiliares:</p>
+<p class="inc">I – 1 (um) policial militar responsável pela reserva de armamento, ou que acumule essa atribuição;</p>
+<p class="inc">II – 1 (um) policial militar responsável pela frota terrestre e fluvial;</p>
+<p class="inc">III – 1 (um) policial militar encarregado da manutenção dos espaços e dos serviços gerais da Unidade (“prefeito”).</p>
+</div>
+<div class="artigo" id="art-14">
+<p class="art"><b>Art. 14.</b> O Comandante de Pelotão responde, perante o Comando, pela:</p>
+<p class="inc">I – instrução profissional e militar dos seus comandados, bem como pelo asseio e pela conservação dos uniformes;</p>
+<p class="inc">II – ordem dos serviços internos de seus elementos;</p>
+<p class="inc">III – conservação das dependências que ocupam;</p>
+<p class="inc">IV – situação das viaturas e embarcações empregadas pelo Pelotão;</p>
+<p class="inc">V – guarda, conservação e limpeza de todo o material a seu cargo;</p>
+<p class="inc">VI – observância das normas de prevenção de acidentes na instrução e nas demais atividades de risco.</p>
+<p class="par"><b>Parágrafo único.</b> Compete ao Comandante de Grupo auxiliar o Comandante de Pelotão nessas responsabilidades, no âmbito de seu Grupo.</p>
+</div>
+</div></details>
+</section>
+<section class="titulo" id="tit-2"><span class="tag">PARTE I – ADMINISTRATIVA</span><h2>TÍTULO II</h2><div class="rule"></div><p class="sub">DA ROTINA ADMINISTRATIVA E DO FLUXO DOCUMENTAL</p>
+<details class="cap" id="cap-4"><summary><span class="cap-n">CAPÍTULO IV</span><span class="cap-t">DA ROTINA ADMINISTRATIVA</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-15">
+<p class="art"><b>Art. 15.</b> O expediente administrativo da CIPA é das 7h30 às 13h, de segunda a sexta-feira, salvo melhor juízo.</p>
+<p class="par"><b>§ 1º</b> O efetivo operacional das viaturas cumpre escala de 24 (vinte e quatro) horas de serviço por 96 (noventa e seis) horas de folga, e o efetivo da Guarda ou da Permanência, escala de 24 (vinte e quatro) horas de serviço por 72 (setenta e duas) horas de folga, conforme a legislação vigente.</p>
+<p class="par"><b>§ 2º</b> A escala interna de Oficial de Dia de Serviço da CIPA é corrida e ininterrupta, variando conforme o quantitativo de oficiais disponíveis na Unidade.</p>
+</div>
+<div class="artigo" id="art-16">
+<p class="art"><b>Art. 16.</b> A assunção e o término do serviço operacional observam o disposto nos arts. 45 a 48, 62 e 63 destas NGA.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-5"><summary><span class="cap-n">CAPÍTULO V</span><span class="cap-t">DO FLUXO DAS DEMANDAS INTERNAS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-17">
+<p class="art"><b>Art. 17.</b> Todo documento dirigido à CIPA deverá ser recebido, via SEI, na árvore do Comando da Companhia.</p>
+</div>
+<div class="artigo" id="art-18">
+<p class="art"><b>Art. 18.</b> Recebido o documento, a demanda será:</p>
+<p class="inc">I – respondida pelo próprio Comando, mediante parte ou despacho do Comandante, do Subcomandante ou do Chefe do Estado-Maior, obrigatoriamente nesta ordem, com devolução do processo ao demandante; ou</p>
+<p class="inc">II – encaminhada às seções subordinadas, quando for necessária sua tramitação na Companhia, na forma do art. 19.</p>
+</div>
+<div class="artigo" id="art-19">
+<p class="art"><b>Art. 19.</b> Sendo necessária a tramitação na Companhia, o Comandante, o Subcomandante ou o Chefe do Estado-Maior expedirá despacho à seção subordinada competente, no qual definirá, desde logo, as providências a serem adotadas.</p>
+<p class="par"><b>Parágrafo único.</b> A seção destinatária adotará as providências cabíveis, prioritariamente, em tempo hábil.</p>
+</div>
+<div class="artigo" id="art-20">
+<p class="art"><b>Art. 20.</b> Visando à desburocratização da administração pública, as seções poderão, quando necessário, responder diretamente aos destinatários, sem a necessidade de retorno do processo ao Comandante, ao Subcomandante ou ao Chefe do Estado-Maior:</p>
+<p class="inc">I – qualquer seção, às unidades subordinadas à Companhia:</p>
+<p class="ali">a) aos Pelotões;</p>
+<p class="ali">b) aos destacamentos;</p>
+<p class="inc">II – a Fiscalização Administrativa (FA/CIPA):</p>
+<p class="ali">a) à DMB, quando o assunto for exclusivamente o controle de material bélico;</p>
+<p class="ali">b) ao CSM, quando o assunto for exclusivamente o controle de frota;</p>
+<p class="inc">III – a P-1/CIPA:</p>
+<p class="ali">a) à P-1/CPC, quando a demanda for exclusivamente sobre escala ou movimentação do efetivo subordinado;</p>
+<p class="inc">IV – a P-2/CIPA:</p>
+<p class="ali">a) ao DII, eventualmente e mediante consulta ao Comando da CIPA, quando o assunto for julgado sensível à segurança da informação da tramitação.</p>
+<figure class="fig">
+  <div class="tab">
+    <div class="tab-row tab-h"><span>Seção</span><span>Destinatário</span><span>Hipótese</span></div>
+    <div class="tab-row"><span data-l="Seção">Qualquer seção</span><span data-l="Destinatário">Pelotões e destacamentos da CIPA</span><span data-l="Hipótese">Assuntos de interesse das unidades subordinadas</span></div>
+    <div class="tab-row"><span data-l="Seção">FA/CIPA</span><span data-l="Destinatário">DMB</span><span data-l="Hipótese">Exclusivamente controle de material bélico</span></div>
+    <div class="tab-row"><span data-l="Seção">FA/CIPA</span><span data-l="Destinatário">CSM</span><span data-l="Hipótese">Exclusivamente controle de frota</span></div>
+    <div class="tab-row"><span data-l="Seção">P-1/CIPA</span><span data-l="Destinatário">P-1/CPC</span><span data-l="Hipótese">Exclusivamente escala e/ou movimentação do efetivo subordinado</span></div>
+    <div class="tab-row"><span data-l="Seção">P-2/CIPA</span><span data-l="Destinatário">DII</span><span data-l="Hipótese">Eventualmente, mediante consulta ao Comando da CIPA, quando o assunto for julgado sensível à segurança da informação da tramitação</span></div>
+  </div>
+  <figcaption>Quadro 1 – Hipóteses de resposta direta pelas seções da CIPA (art. 20).</figcaption>
+</figure>
+</div>
+<div class="artigo" id="art-21">
+<p class="art"><b>Art. 21.</b> Todo documento que retornar da CIPA à unidade demandante será encaminhado mediante despacho, preferencialmente assinado pelo oficial responsável pela respectiva seção.</p>
+</div>
+<div class="artigo" id="art-22">
+<p class="art"><b>Art. 22.</b> Solucionada a demanda junto ao Comando, Departamento, Diretoria ou qualquer outro demandante interna corporis, o respectivo processo deverá ser arquivado em bloco interno específico e concluído na árvore principal da respectiva sala SEI.</p>
+<figure class="fig">
+  <ol class="flx">
+    <li class="flx-ini">Documento dirigido à CIPA recebido via SEI na árvore do Comando</li>
+    <li class="flx-q">O Comando responde diretamente?
+      <div class="flx-alt"><span class="sim">Sim</span> Cmt, SCmt ou ChEM responde (obrigatoriamente nesta ordem) por parte ou despacho → processo devolvido ao demandante</div></li>
+    <li><span class="nao">Não</span> Cmt, SCmt ou ChEM despacha à seção competente, definindo desde logo as providências</li>
+    <li>Seção adota as providências cabíveis, prioritariamente em tempo hábil</li>
+    <li class="flx-q">Hipótese de resposta direta (Quadro 1)?
+      <div class="flx-alt"><span class="sim">Sim</span> Seção responde diretamente, mediante despacho do chefe → processo devolvido ao demandante</div></li>
+    <li><span class="nao">Não</span> Processo retorna ao Comando, que responde ao demandante mediante despacho</li>
+    <li class="flx-fim">Demanda solucionada: arquivamento em bloco interno e conclusão na árvore do SEI</li>
+  </ol>
+  <figcaption>Figura 2 – Fluxo das demandas internas na CIPA (arts. 17 a 22).</figcaption>
+</figure>
+</div>
+</div></details>
+<details class="cap" id="cap-6"><summary><span class="cap-n">CAPÍTULO VI</span><span class="cap-t">DO FLUXO DAS DEMANDAS EXTERNAS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-23">
+<p class="art"><b>Art. 23.</b> As demandas externas para apuração do cometimento de crimes ambientais chegam à CIPA, em regra, por meio de ofícios dos órgãos ambientais e de controle, como o Ministério Público e a delegacia especializada em meio ambiente, de denúncias populares avulsas e dos alertas do sistema de monitoramento de desmatamento e queimadas do IBAMA.</p>
+</div>
+<div class="artigo" id="art-24">
+<p class="art"><b>Art. 24.</b> As demandas externas referidas no art. 23, uma vez recebidas, seguem o seguinte fluxo interno na CIPA:</p>
+<p class="inc">I – a P-2 verifica a demanda nos sistemas de monitoramento satelital e, confirmada a procedência, cria o processo SEI, juntando inicialmente a denúncia do demandante e as imagens ou fotografias, e o encaminha à P-3 mediante despacho do Chefe da P-2;</p>
+<p class="inc">II – a P-3 elabora a Ordem de Missão, para demandas fora da Capital, ou a Ordem de Policiamento Ostensivo, para demandas na Capital, e encaminha o processo à P-1 mediante despacho do Chefe da P-3;</p>
+<p class="inc">III – a P-1 verifica a disponibilidade de efetivo e, havendo, confecciona a escala e a anexa ao processo, fazendo nela constar o nome e o número da Ordem de Missão ou de Policiamento e, não havendo disponibilidade de efetivo:</p>
+<p class="ali">a) se o atendimento for imprevisível, isto é, superior a 7 (sete) dias corridos, a P-1 emite certidão de falta de contingente e a encaminha ao Comando da Companhia, que a remete à autoridade demandante justificando o não atendimento;</p>
+<p class="ali">b) se o atendimento for previsível, em até 7 (sete) dias corridos, a P-1 mantém o processo em sua unidade no SEI e, assim que elaborar a escala, encaminha-o mediante despacho à SAO/P-3 para emissão do relatório resultante da ação;</p>
+<p class="inc">IV – executa-se a missão ou a operação;</p>
+<p class="inc">V – a documentação referente à missão ou à operação é digitalizada pelo oficial ou graduado mais antigo que nela atuou e enviada à SAO, que a junta ao processo originário e analisa sua legalidade, remetendo-o ao final ao Comandante da Companhia para aprovação e expedição do ofício de retorno ao demandante;</p>
+<p class="inc">VI – o Comando responde ao demandante e/ou arquiva o processo.</p>
+</div>
+<div class="artigo" id="art-25">
+<p class="art"><b>Art. 25.</b> Considerada improcedente a demanda nos levantamentos iniciais, a P-2 emitirá parecer ou relatório que comprove a improcedência e o encaminhará diretamente ao Comando, sugerindo o arquivamento.</p>
+<p class="par"><b>Parágrafo único.</b> As ocorrências recebidas via Centro Integrado de Comando e Controle (CICC) que não decorram de denúncias ou de demandas de órgãos ambientais externos seguem o rito das ocorrências rotineiras de qualquer unidade: são iniciadas e concluídas via CICC e comunicadas ao Oficial de Segunda Malha de serviço do dia; a documentação relativa a eventuais infrações ambientais, contudo, deve ser digitalizada e enviada diretamente à SAO/P-3, mediante abertura de novo processo SEI na unidade “SEI Tropa”, com a Parte Especial, o PPE e os documentos ambientais anexados em formato PDF.</p>
+<figure class="fig">
+  <ol class="flx">
+    <li class="flx-ini">Demanda externa: ofícios (MP, DPMA), denúncias, alertas do IBAMA</li>
+    <li>P-2 verifica a demanda nos sistemas de monitoramento satelital</li>
+    <li class="flx-q">Procedente?
+      <div class="flx-alt"><span class="nao">Não</span> P-2 emite parecer ou relatório de improcedência → Comando arquiva o processo</div></li>
+    <li><span class="sim">Sim</span> P-2 cria o processo SEI (denúncia e imagens) e despacha à P-3</li>
+    <li>P-3 elabora a Ordem de Missão (fora da Capital) ou a OPO (na Capital) e despacha à P-1</li>
+    <li class="flx-q">Há efetivo disponível?
+      <div class="flx-alt"><span class="nao">Não</span> Atendimento em até 7 dias? <b>Sim:</b> processo aguarda na P-1 até a elaboração da escala. <b>Não:</b> P-1 emite certidão de falta de contingente e o Comando justifica o não atendimento à autoridade</div></li>
+    <li><span class="sim">Sim</span> P-1 elabora a escala (com nome e nº da OM ou OPO) e a anexa ao processo</li>
+    <li>Execução da missão ou operação</li>
+    <li>Militar mais antigo da missão digitaliza a documentação e a envia à SAO</li>
+    <li>SAO/P-3 junta ao processo originário e analisa a legalidade</li>
+    <li class="flx-fim">Comando aprova, responde ao demandante e/ou arquiva o processo</li>
+  </ol>
+  <figcaption>Figura 3 – Fluxo das demandas externas na CIPA (arts. 24 e 25).</figcaption>
+</figure>
+<figure class="fig">
+  <ol class="flx">
+    <li class="flx-ini">Ocorrência recebida via CICC (sem demanda externa)</li>
+    <li>Guarnição atende; a ocorrência é iniciada e concluída via CICC</li>
+    <li>Comunicação ao Oficial de Segunda Malha de serviço</li>
+    <li class="flx-q">Houve infração ambiental?
+      <div class="flx-alt"><span class="nao">Não</span> Encerramento via CICC</div></li>
+    <li><span class="sim">Sim</span> Digitalização da Parte Especial, do PPE e dos documentos ambientais (PDF)</li>
+    <li>Abertura de novo processo SEI na unidade “SEI Tropa”</li>
+    <li>SAO/P-3 analisa a legalidade das autuações</li>
+    <li class="flx-fim">Relatório analítico conclusivo ao Comando</li>
+  </ol>
+  <figcaption>Figura 4 – Fluxo da documentação das ocorrências recebidas via CICC (art. 25, parágrafo único).</figcaption>
+</figure>
+</div>
+</div></details>
+<details class="cap" id="cap-7"><summary><span class="cap-n">CAPÍTULO VII</span><span class="cap-t">DAS RELAÇÕES INTERINSTITUCIONAIS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-26">
+<p class="art"><b>Art. 26.</b> A CIPA integra o Grupo de Trabalho de Implementação e o Comitê Gestor do Plano Estadual de Prevenção e Controle do Desmatamento e Queimadas de Roraima (PPCDQ-RR 2025–2028), em conjunto com a Fundação Estadual do Meio Ambiente e Recursos Hídricos (FEMARH).</p>
+<p class="par"><b>Parágrafo único.</b> A CIPA indicará periodicamente um policial militar, oficial ou praça, para compor o Grupo de Trabalho e participar dos encontros sempre que demandado.</p>
+</div>
+<div class="artigo" id="art-27">
+<p class="art"><b>Art. 27.</b> A CIPA atua de forma integrada com os seguintes órgãos, entre outros:</p>
+<figure class="fig">
+  <div class="tab tab-2">
+    <div class="tab-row tab-h"><span>Órgão</span><span>Forma de atuação</span></div>
+    <div class="tab-row"><span data-l="Órgão">FEMARH</span><span data-l="Atuação">Planejamento e execução do PPCDQ-RR, fiscalização e autuação integrada</span></div>
+    <div class="tab-row"><span data-l="Órgão">IBAMA</span><span data-l="Atuação">Apoio a fiscalizações e ao Projeto Quelônios da Amazônia no Baixo Rio Branco</span></div>
+    <div class="tab-row"><span data-l="Órgão">ICMBio</span><span data-l="Atuação">Apoio operacional e proteção de unidades de conservação</span></div>
+    <div class="tab-row"><span data-l="Órgão">Ministério Público de Roraima</span><span data-l="Atuação">Suporte operacional às ações fiscalizatórias e às determinações ministeriais</span></div>
+    <div class="tab-row"><span data-l="Órgão">Polícia Civil e DPMA</span><span data-l="Atuação">Fiscalização ambiental e providências de polícia judiciária</span></div>
+    <div class="tab-row"><span data-l="Órgão">CBMRR e Defesa Civil</span><span data-l="Atuação">Monitoramento e resposta a queimadas e sala integrada de controle</span></div>
+    <div class="tab-row"><span data-l="Órgão">FUNAI e prefeituras</span><span data-l="Atuação">Articulação territorial em áreas remotas e terras indígenas</span></div>
+  </div>
+  <figcaption>Órgãos parceiros e forma de atuação integrada (art. 27).</figcaption>
+</figure>
+</div>
+<div class="artigo" id="art-28">
+<p class="art"><b>Art. 28.</b> No apoio a órgãos ambientais e de fiscalização, compete à guarnição garantir a segurança das equipes técnicas, preservar a ordem pública e os vestígios e intervir diante da constatação de crimes e infrações ambientais.</p>
+<p class="par"><b>Parágrafo único.</b> As missões de apoio decorrentes de demandas externas serão executadas mediante um dos documentos previstos no art. 12.</p>
+</div>
+</div></details>
+</section>
+<section class="titulo" id="tit-3"><span class="tag">PARTE II – OPERACIONAL</span><h2>TÍTULO III</h2><div class="rule"></div><p class="sub">DAS DISPOSIÇÕES GERAIS</p>
+<details class="cap" id="cap-8"><summary><span class="cap-n">CAPÍTULO VIII</span><span class="cap-t">DAS OCORRÊNCIAS E DOS PROCEDIMENTOS OPERACIONAIS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-29">
+<p class="art"><b>Art. 29.</b> São ocorrências típicas da Companhia, entre outras:</p>
+<p class="inc">I – desmatamento ilegal;</p>
+<p class="inc">II – queimadas;</p>
+<p class="inc">III – exploração e transporte clandestino de produtos florestais;</p>
+<p class="inc">IV – pesca predatória;</p>
+<p class="inc">V – caça;</p>
+<p class="inc">VI – maus-tratos e tráfico de animais silvestres;</p>
+<p class="inc">VII – garimpo ilegal;</p>
+<p class="inc">VIII – poluição, inclusive sonora;</p>
+<p class="inc">IX – resgate de fauna silvestre.</p>
+</div>
+<div class="artigo" id="art-30">
+<p class="art"><b>Art. 30.</b> Os procedimentos específicos de cada natureza de ocorrência, terrestre ou fluvial, serão disciplinados em Procedimentos Operacionais Padrão (POP) próprios, elaborados pelo Comandante da CIPA e aprovados pelo Comando-Geral.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-9"><summary><span class="cap-n">CAPÍTULO IX</span><span class="cap-t">DAS DEFINIÇÕES</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-31">
+<p class="art"><b>Art. 31.</b> Prontidão é a situação em que o policial militar permanece nas dependências da Unidade, em condições de emprego imediato, aguardando ordens.</p>
+</div>
+<div class="artigo" id="art-32">
+<p class="art"><b>Art. 32.</b> Sobreaviso é a situação em que o policial militar, fora das dependências da Unidade, permanece em local conhecido e com meio de comunicação ativo, em condições de atender de imediato ao acionamento e de se apresentar no menor tempo possível.</p>
+</div>
+<div class="artigo" id="art-33">
+<p class="art"><b>Art. 33.</b> Guarda é a modalidade de serviço cujo efetivo mínimo escalado é de 3 (três) policiais militares, na qual a vigilância e o estado de prontidão se mantêm por 24 (vinte e quatro) horas, em rodízio mínimo de 2 (duas) horas no posto por 4 (quatro) horas de descanso.</p>
+</div>
+<div class="artigo" id="art-34">
+<p class="art"><b>Art. 34.</b> Permanência é a modalidade de serviço cujo efetivo máximo escalado é de 2 (dois) policiais militares, com estado de vigilância e de prontidão consideravelmente reduzido.</p>
+<p class="par"><b>§ 1º</b> Havendo 2 (dois) policiais escalados, ambos permanecem ativos no posto de serviço até as 19h; após esse horário, revezam-se entre prontidão e descanso até as 3h, recolhendo-se ambos para descanso das 3h às 6h.</p>
+<p class="par"><b>§ 2º</b> Havendo apenas 1 (um) policial escalado, este permanece ativo no posto de serviço, ininterruptamente, até as 2h, recolhendo-se para descanso das 2h às 6h.</p>
+<p class="par"><b>§ 3º</b> Nas hipóteses dos §§ 1º e 2º, é vedado ao policial sair da Unidade durante o serviço e durante os descansos, nos quais permanecerá desequipado e “aliviado”.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-10"><summary><span class="cap-n">CAPÍTULO X</span><span class="cap-t">DO OFICIAL DE SERVIÇO</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-35">
+<p class="art"><b>Art. 35.</b> A função de Oficial de Serviço (Oficial de Dia) será exercida exclusivamente por oficiais da CIPA, mediante escala prévia e corrida, conforme o quantitativo de oficiais disponíveis na Unidade.</p>
+</div>
+<div class="artigo" id="art-36">
+<p class="art"><b>Art. 36.</b> A jornada de serviço do Oficial de Serviço é de 24 (vinte e quatro) horas, das 7h30 às 7h30 do dia seguinte.</p>
+<p class="par"><b>§ 1º</b> Nos dias úteis, as primeiras 12 (doze) horas, das 7h30 às 19h30, são cumpridas em prontidão, e as 12 (doze) horas seguintes, em sobreaviso.</p>
+<p class="par"><b>§ 2º</b> Nos finais de semana, as 24 (vinte e quatro) horas são cumpridas em sobreaviso, devendo o Oficial de Serviço, nas primeiras horas do dia, fazer contato com o Comandante da Guarda ou com o Permanência para tomar conhecimento das alterações de pessoal e de material da Unidade, e comparecer à Unidade ao menos uma vez durante o dia, em horário de sua livre escolha, com registro de sua presença no livro da Guarda pelo Comandante da Guarda ou pelo Permanência.</p>
+</div>
+<div class="artigo" id="art-37">
+<p class="art"><b>Art. 37.</b> Compete ao Oficial de Serviço:</p>
+<p class="inc">I – receber o efetivo na parada matinal nos dias úteis em que estiver escalado;</p>
+<p class="inc">II – representar a Companhia em reuniões e eventos realizados fora do horário de expediente, nos dias úteis, salvo quando se tratar de reunião com o Comandante do CPC ou com o Comandante-Geral, hipótese em que a representação caberá ao Comandante ou ao Subcomandante;</p>
+<p class="inc">III – operacionalizar a logística das missões atribuídas à Unidade fora do horário de expediente e nos finais de semana;</p>
+<p class="inc">IV – receber as comunicações das ocorrências atendidas pelas guarnições;</p>
+<p class="inc">V – receber a comunicação de uso da força que resulte em lesão ou morte e informar o Comandante e o Subcomandante da CIPA;</p>
+<p class="inc">VI – conduzir o debriefing ao término do serviço e liberar o efetivo;</p>
+<p class="inc">VII – assegurar a continuidade administrativa, a disciplina, a segurança das instalações, a fiscalização patrimonial e o acompanhamento das ocorrências de destaque da Unidade;</p>
+<p class="inc">VIII – acompanhar a disciplina da tropa, de serviço ou de folga, durante todo o seu turno de 24 (vinte e quatro) horas;</p>
+<p class="inc">IX – apurar faltas, atrasos e desvios de conduta;</p>
+<p class="inc">X – acompanhar presencialmente o policial da Unidade, de serviço ou de folga, conduzido à Corregedoria quando autuado em flagrante, sem interferir na lavratura dos autos nem na condução da ocorrência pela guarnição condutora.</p>
+<p class="par"><b>Parágrafo único.</b> A função de Oficial de Serviço poderá ser cumulada com as demais escalas ou serviços da Unidade, tais como Oficial de Operações, Comandante de Operações ou qualquer outra atribuição operacional ou administrativa correlata.</p>
+</div>
+<div class="artigo" id="art-38">
+<p class="art"><b>Art. 38.</b> Durante a prontidão ou o sobreaviso, é vedado ao Oficial de Serviço:</p>
+<p class="inc">I – ausentar-se das dependências da Unidade, quando de prontidão, sem autorização do Comandante ou do Subcomandante;</p>
+<p class="inc">II – ausentar-se do Município sede da Unidade ou assumir compromisso que impeça o pronto atendimento ao acionamento, quando de sobreaviso;</p>
+<p class="inc">III – manter desligado ou inacessível o meio de comunicação funcional;</p>
+<p class="inc">IV – ingerir bebida alcoólica ou qualquer substância que comprometa a pronta resposta;</p>
+<p class="inc">V – deixar de comunicar ao Comandante ou ao Subcomandante qualquer impedimento ao cumprimento do serviço, para fins de substituição.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-11"><summary><span class="cap-n">CAPÍTULO XI</span><span class="cap-t">DAS ÁREAS DE ATUAÇÃO</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-39">
+<p class="art"><b>Art. 39.</b> A CIPA atua em todo o território do Estado de Roraima, em áreas urbanas, rurais, florestais e ribeirinhas, em unidades de conservação, terras indígenas, regiões de fronteira e locais de difícil acesso, com maior concentração de ações no sul do Estado.</p>
+</div>
+<div class="artigo" id="art-40">
+<p class="art"><b>Art. 40.</b> Para fins de planejamento, a atuação da Companhia compreende duas realidades predominantes:</p>
+<figure class="fig">
+  <div class="areas">
+    <div class="area a-bv">
+      <h5>🏙️ Boa Vista</h5>
+      <p><b>Ocorrências predominantes:</b> poluição sonora, som automotivo, maus-tratos a animais, resgate de fauna silvestre, educação ambiental, fiscalização de empreendimentos e demandas do CICC.</p>
+      <p><b>Características:</b> ocorrências urbanas, administrativas e preventivas.</p>
+    </div>
+    <div class="area a-int">
+      <h5>🌳 Interior</h5>
+      <p><b>Ocorrências predominantes:</b> desmatamento ilegal, exploração e transporte clandestino de madeira, intervenção em Áreas de Preservação Permanente e Reservas Legais, pesca predatória, garimpo ilegal e queimadas.</p>
+      <p><b>Características:</b> crimes de maior gravidade, que exigem operações de longa duração e estrutura logística para áreas remotas e fluviais.</p>
+    </div>
+  </div>
+  <figcaption>As duas realidades predominantes de atuação da Companhia (art. 40).</figcaption>
+</figure>
+</div>
+</div></details>
+<details class="cap" id="cap-12"><summary><span class="cap-n">CAPÍTULO XII</span><span class="cap-t">DOS REQUISITOS, DA CONDUTA E DO UNIFORME</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-41">
+<p class="art"><b>Art. 41.</b> São requisitos para operar na CIPA ser voluntário e possuir curso de especialização em policiamento ambiental reconhecido pela PMRR ou ser aprovado em estágio operacional da Companhia.</p>
+<p class="par"><b>Parágrafo único.</b> O Curso de Operações Policiais Ambientais habilita o policial a atuar na Unidade; são aceitos, secundariamente, o Curso de Fiscal Ambiental, o Curso de Operações na Selva, o Curso de Operações Ribeirinhas, o Curso de Operações Fluviais e o Curso de Operações Especiais.</p>
+</div>
+<div class="artigo" id="art-42">
+<p class="art"><b>Art. 42.</b> O policial militar da CIPA, de serviço ou de folga, deve:</p>
+<p class="inc">I – pautar sua conduta por estas NGA, no trabalho e fora dele, de modo a influenciar positivamente a coletividade;</p>
+<p class="inc">II – ter postura e compostura, conduta familiar e profissional irrepreensíveis e idoneidade moral;</p>
+<p class="inc">III – ser dotado das virtudes e atributos militares, em especial autocontrole, combatividade, coragem, disciplina, força de vontade, honestidade, lealdade, perseverança, vivacidade e espírito de preservação do meio ambiente, entendido como agir com responsabilidade e iniciativa, preservando e respeitando as normas ambientais;</p>
+<p class="inc">IV – manter-se producente na prevenção e na repressão aos ilícitos ambientais;</p>
+<p class="inc">V – zelar pelo seu comportamento e postura e ter o compromisso de fiscalizar os demais;</p>
+<p class="inc">VI – não utilizar o uniforme orgânico em transporte coletivo ou durante a folga, salvo autorização prévia;</p>
+<p class="inc">VII – não utilizar símbolos exclusivos da CIPA quando não lotado na Companhia, ressalvados o brevê de curso e as insígnias de caráter personalíssimo.</p>
+</div>
+<div class="artigo" id="art-43">
+<p class="art"><b>Art. 43.</b> O uniforme de serviço operacional da CIPA obedece ao Regulamento de Uniformes e Insígnias da PMRR e às normas complementares vigentes.</p>
+<p class="par"><b>§ 1º</b> A composição dos uniformes nas diversas atribuições observa a Portaria nº 1434/PMRR/QCG/GABQCG, de 5 de agosto de 2026.</p>
+<p class="par"><b>§ 2º</b> O policial militar manterá na Base da Companhia fardamento extra e itens pessoais em pronto emprego, em razão da possibilidade de acionamento inopinado para qualquer região do Estado.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-13"><summary><span class="cap-n">CAPÍTULO XIII</span><span class="cap-t">DOS EQUIPAMENTOS INDIVIDUAIS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-44">
+<p class="art"><b>Art. 44.</b> O policial militar da CIPA portará obrigatoriamente:</p>
+<p class="inc">I – no cinto tático: coldre de perna ou de cintura, arma de porte tipo pistola, fiel e canivete tático;</p>
+<p class="inc">II – no colete tático: colete modular com proteção balística, par de algemas e chave, lanterna tática com porta-lanterna, porta-HT, porta-carregador de pistola e de fuzil, 2 (dois) pares de luvas descartáveis, balaclava, caneta preta ou azul, bolso modular, coldre de pistola (motorista), identidade funcional, cartão de saúde, CNH e dinheiro para alimentação e gastos pessoais.</p>
+<p class="par"><b>Parágrafo único.</b> Mediante autorização do Comandante da CIPA, é permitido o uso de câmera fixada no colete, de propriedade e responsabilidade do policial militar.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-14"><summary><span class="cap-n">CAPÍTULO XIV</span><span class="cap-t">DAS DISPOSIÇÕES COMUNS AO SERVIÇO OPERACIONAL</span><span class="chev">▾</span></summary><div class="cap-body">
+<h4 class="secao"><span>Seção I</span> Do início do serviço</h4>
+<div class="artigo" id="art-45">
+<p class="art"><b>Art. 45.</b> Os policiais militares chegarão à Base, no mínimo, 15 (quinze) minutos antes do horário previsto em escala e dirigir-se-ão à reserva de armamento para acautelamento do material individual e coletivo.</p>
+</div>
+<div class="artigo" id="art-46">
+<p class="art"><b>Art. 46.</b> O sargento mais antigo presente colocará a tropa em forma no horário estabelecido, realizará a chamada nominal, anotará as alterações e apresentará a tropa ao Oficial de Serviço, ainda nas dependências da CIPA, deslocando-se em seguida ao Batalhão de Operações Policiais Especiais (BOPE) para apresentar-se ao Oficial de Segunda Malha no horário estabelecido em escala.</p>
+</div>
+<div class="artigo" id="art-47">
+<p class="art"><b>Art. 47.</b> As áreas de atuação na Capital são determinadas pelo Oficial de Segunda Malha de serviço e, eventualmente, por necessidade pontual, pela escala; nas missões decorrentes de demandas externas, pela Ordem de Missão.</p>
+</div>
+<div class="artigo" id="art-48">
+<p class="art"><b>Art. 48.</b> A guarnição assumirá o serviço mediante comunicação via rádio ao CICC.</p>
+</div>
+<h4 class="secao"><span>Seção II</span> Da comunicação via rádio</h4>
+<div class="artigo" id="art-49">
+<p class="art"><b>Art. 49.</b> Cada guarnição atuará com um rádio portátil por policial, além do rádio da viatura, quando houver; as frequências serão definidas pelo Comandante da Guarnição.</p>
+</div>
+<div class="artigo" id="art-50">
+<p class="art"><b>Art. 50.</b> Na rede de rádio são permitidas exclusivamente comunicações operacionais, objetivas, claras e concisas; comunicações longas ou administrativas utilizarão outro meio.</p>
+</div>
+<div class="artigo" id="art-51">
+<p class="art"><b>Art. 51.</b> A prioridade de comunicação é obedecida com rigor: quando uma guarnição a solicita, as demais se calam.</p>
+</div>
+<div class="artigo" id="art-52">
+<p class="art"><b>Art. 52.</b> Deparando-se com ocorrência, a guarnição transmitirá as informações ao CICC e ao Oficial de Segunda Malha de serviço.</p>
+</div>
+<h4 class="secao"><span>Seção III</span> Dos aspectos a observar em pessoas</h4>
+<div class="artigo" id="art-53">
+<p class="art"><b>Art. 53.</b> Durante o patrulhamento, a guarnição atentará, em pessoas, para as mãos, volumes sob as vestes, alterações emocionais, mudanças bruscas de trajeto, tentativas de evasão e descarte de objetos.</p>
+</div>
+<h4 class="secao"><span>Seção IV</span> Do comportamento e das proibições</h4>
+<div class="artigo" id="art-54">
+<p class="art"><b>Art. 54.</b> O policial militar da CIPA abster-se-á de:</p>
+<p class="inc">I – tratar de interesses particulares em serviço;</p>
+<p class="inc">II – divulgar conteúdos que comprometam a imagem da Companhia ou da Corporação;</p>
+<p class="inc">III – arremessar objetos para fora da viatura;</p>
+<p class="inc">IV – usar linguagem incompatível com o decoro militar;</p>
+<p class="inc">V – permanecer em via pública sem cobertura;</p>
+<p class="inc">VI – receber vantagem indevida;</p>
+<p class="inc">VII – ausentar-se de estabelecimento sem quitar as despesas.</p>
+</div>
+<h4 class="secao"><span>Seção V</span> Dos procedimentos em locais públicos</h4>
+<div class="artigo" id="art-55">
+<p class="art"><b>Art. 55.</b> Nas refeições em serviço, o local será escolhido de modo a não expor a guarnição a risco, o pagamento será feito ao solicitar a refeição e dois policiais permanecerão em segurança, em rodízio.</p>
+</div>
+<h4 class="secao"><span>Seção VI</span> Dos procedimentos em local de ocorrência</h4>
+<div class="artigo" id="art-56">
+<p class="art"><b>Art. 56.</b> A atividade da CIPA pautar-se-á pela observância das leis e dos princípios sobre o uso da força e das armas de fogo e pela proteção da dignidade humana.</p>
+</div>
+<div class="artigo" id="art-57">
+<p class="art"><b>Art. 57.</b> No local de ocorrência, a guarnição deverá:</p>
+<p class="inc">I – atuar de forma coesa, sem inferioridade numérica;</p>
+<p class="inc">II – aproximar-se com cautela;</p>
+<p class="inc">III – preservar locais de crime, vestígios e testemunhas;</p>
+<p class="inc">IV – assegurar atendimento médico aos feridos;</p>
+<p class="inc">V – conduzir à autoridade competente o que não puder ser solucionado no local;</p>
+<p class="inc">VI – comunicar o CICC e o Oficial de Segunda Malha de serviço;</p>
+<p class="inc">VII – apresentar-se ao militar mais antigo quando atuar em apoio a guarnição comandada por superior.</p>
+</div>
+<div class="artigo" id="art-58">
+<p class="art"><b>Art. 58.</b> Os boletins, relatórios e formulários de autuação decorrentes das ocorrências e missões serão encaminhados à Subseção de Análise Operacional, na forma do parágrafo único do art. 12.</p>
+</div>
+<h4 class="secao"><span>Seção VII</span> Do uso da força</h4>
+<div class="artigo" id="art-59">
+<p class="art"><b>Art. 59.</b> A guarnição age pautada no uso diferenciado da força, empregando somente a necessária para conter o agressor; os policiais não dispararão armas de fogo contra pessoas, exceto em legítima defesa própria ou de terceiro contra perigo iminente de morte ou lesão grave.</p>
+</div>
+<div class="artigo" id="art-60">
+<p class="art"><b>Art. 60.</b> Quando o uso da força causar lesão ou morte, a guarnição:</p>
+<p class="inc">I – facilitará o socorro e preservará o local;</p>
+<p class="inc">II – comunicará o fato ao Oficial de Segunda Malha e ao Oficial de Serviço da CIPA, que informará o Comandante e o Subcomandante da Companhia;</p>
+<p class="inc">III – elaborará relatório individual sobre o uso da força;</p>
+<p class="inc">IV – informará o CICC.</p>
+</div>
+<div class="artigo" id="art-61">
+<p class="art"><b>Art. 61.</b> O policial ferido será conduzido ao pronto-socorro mais próximo e, em caso de internação, acompanhado por policial designado até a chegada de familiar.</p>
+</div>
+<h4 class="secao"><span>Seção VIII</span> Do término do serviço</h4>
+<div class="artigo" id="art-62">
+<p class="art"><b>Art. 62.</b> Ao término do serviço, as guarnições retornarão à CIPA mediante comunicação ao CICC.</p>
+</div>
+<div class="artigo" id="art-63">
+<p class="art"><b>Art. 63.</b> Após a devolução do material, o efetivo será liberado pelo Oficial de Serviço, precedido de debriefing sobre o serviço, as situações de risco, os erros e os acertos.</p>
+</div>
+</div></details>
+</section>
+<section class="titulo" id="tit-4"><span class="tag">PARTE II – OPERACIONAL</span><h2>TÍTULO IV</h2><div class="rule"></div><p class="sub">DO POLICIAMENTO TERRESTRE</p>
+<details class="cap" id="cap-15"><summary><span class="cap-n">CAPÍTULO XV</span><span class="cap-t">DA GUARNIÇÃO TERRESTRE</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-64">
+<p class="art"><b>Art. 64.</b> Cada guarnição terrestre da CIPA é composta por, no mínimo, 4 (quatro) policiais militares para qualquer tipo de emprego – serviço diário, radiopatrulhamento, operações e missões da Unidade ou da PMRR –, nas seguintes funções:</p>
+<p class="inc">I – 1º Homem (Comandante da Guarnição), preferencialmente graduado ou oficial;</p>
+<p class="inc">II – 2º Homem (Motorista), soldado ou cabo com experiência para a função;</p>
+<p class="inc">III – 3º Homem (Segurança/Patrulheiro), cabo ou soldado, não necessariamente o mais antigo, mas o mais experiente no radiopatrulhamento tático móvel;</p>
+<p class="inc">IV – 4º Homem (Segurança/Patrulheiro/Anotador), soldado, que é também o revistador da equipe.</p>
+<p class="par"><b>Parágrafo único.</b> É vedado o patrulhamento com efetivo inferior a 4 (quatro) policiais militares.</p>
+</div>
+<div class="artigo" id="art-65">
+<p class="art"><b>Art. 65.</b> São atribuições dos componentes da guarnição terrestre:</p>
+<p class="inc">I – 1º Homem (Comandante da Guarnição):</p>
+<p class="ali">a) comanda, coordena e controla a guarnição e decide a resolução das ocorrências, assessorado pelos demais;</p>
+<p class="ali">b) embarcado, patrulha a parte frontal, a lateral direita e a retaguarda pelo retrovisor direito;</p>
+<p class="ali">c) opera os dispositivos sinalizadores e o rádio da viatura;</p>
+<p class="ali">d) nas abordagens, detém a unidade de comando, realizando a verbalização e as entrevistas preliminares;</p>
+<p class="ali">e) aciona, via CICC, as autoridades e os órgãos competentes para cada tipo de ocorrência;</p>
+<p class="inc">II – 2º Homem (Motorista):</p>
+<p class="ali">a) é responsável pela manutenção, limpeza, inspeção e condução segura da viatura, cientificando o Comandante das alterações;</p>
+<p class="ali">b) no patrulhamento, dirige defensivamente, observando a frente e a esquerda, e mantém-se atualizado sobre as vias e os pontos de referência;</p>
+<p class="ali">c) nas abordagens, é responsável pela segurança perimetral e pela comunicação via rádio;</p>
+<p class="ali">d) em longos deslocamentos por rodovias para fora da Capital, é permitido manter os vidros da viatura fechados;</p>
+<p class="ali">e) rebocando embarcação, a velocidade máxima de deslocamento é de 90 km/h;</p>
+<p class="inc">III – 3º Homem (Segurança/Patrulheiro):</p>
+<p class="ali">a) equipa a viatura no início do serviço, auxiliado pelo 4º Homem;</p>
+<p class="ali">b) embarcado, faz a segurança do motorista, patrulhando a lateral esquerda e a retaguarda;</p>
+<p class="ali">c) é responsável pelo equipamento, pela munição e pelo armamento extras da viatura e, na ausência do Comandante, toma a iniciativa;</p>
+<p class="ali">d) nas abordagens, faz a aproximação do veículo abordado e recolhe provas e objetos que configurem corpo de delito;</p>
+<p class="inc">IV – 4º Homem (Segurança/Patrulheiro/Anotador):</p>
+<p class="ali">a) é responsável pela documentação da guarnição e pelas anotações de alertas gerais;</p>
+<p class="ali">b) patrulha a lateral direita e a retaguarda e informa, a todo momento, a localização exata da equipe;</p>
+<p class="ali">c) realiza a busca pessoal e a vistoria no interior de veículos;</p>
+<p class="ali">d) organiza os documentos e formulários da guarnição: auto de infração, auto de notificação, termo de destinação de bens apreendidos, formulários do termo circunstanciado de ocorrência, auto de resistência, auto de resistência e prisão, auto de infração de trânsito, auto de apreensão e remoção e número de relatório de ocorrência policial.</p>
+<p class="par"><b>Parágrafo único.</b> Embarcados na viatura, os policiais conduzirão a arma com o dedo fora da tecla do gatilho e o cano direcionado para local seguro, inserindo o dedo na tecla somente em situação de iminente disparo.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-16"><summary><span class="cap-n">CAPÍTULO XVI</span><span class="cap-t">DAS VIATURAS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-66">
+<p class="art"><b>Art. 66.</b> A relação e a situação das viaturas da CIPA são mantidas atualizadas pela Fiscalização Administrativa.</p>
+</div>
+<div class="artigo" id="art-67">
+<p class="art"><b>Art. 67.</b> A viatura empregada no radiopatrulhamento urbano ou rural, em missões, em operações e no apoio a outros órgãos será equipada prioritariamente com:</p>
+<p class="inc">I – 4 (quatro) armas longas, cada uma com, no mínimo, dois carregadores sobressalentes: fuzil T4 ou carabina IA2 5,56 para o Comandante e para o 3º Homem; fuzil Imbel 7,62 ou carabina 5,56 para o Motorista; espingarda calibre 12, com kit real e kit de impacto controlado, para o 4º Homem;</p>
+<p class="inc">II – bornal com munições químicas;</p>
+<p class="inc">III – no mínimo, 1 (um) rádio transmissor portátil e/ou telefone funcional;</p>
+<p class="inc">IV – no mínimo, 1 (um) bastão policial de 90 cm;</p>
+<p class="inc">V – 1 (uma) arma de incapacitação neuromuscular, com, no mínimo, 3 (três) cartuchos;</p>
+<p class="inc">VI – formulários de documentação da guarnição.</p>
+<p class="par"><b>§ 1º</b> A guarnição somente sairá da Unidade com as 4 (quatro) armas longas; na falta de alguma, esta poderá ser substituída por outra de dotação da Unidade, a critério do Comandante da Guarnição.</p>
+<p class="par"><b>§ 2º</b> A critério do Comandante e conforme a missão, a viatura poderá ser equipada com aeronave remotamente pilotada, cabo solteiro, motosserra, facão, pé de cabra, corta-frio, machadinha, material de contenção de fauna (gaiola, cambão, puçá, rede e pinça) e demais equipamentos necessários.</p>
+<p class="par"><b>§ 3º</b> No início do serviço, todos os integrantes da guarnição inspecionarão os armamentos, e somente os habilitados poderão manusear armamentos que exijam habilitação específica.</p>
+</div>
+<div class="artigo" id="art-68">
+<p class="art"><b>Art. 68.</b> A inspeção, a limpeza e a manutenção da viatura cabem ao Motorista, auxiliado pelos demais, com lançamento das alterações em ficha própria.</p>
+<p class="par"><b>Parágrafo único.</b> O 3º e o 4º Homem, sob orientação do Comandante da Guarnição, equipam a viatura, que, depois de equipada, permanece trancada ou com policial da equipe próximo.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-17"><summary><span class="cap-n">CAPÍTULO XVII</span><span class="cap-t">DO PATRULHAMENTO TERRESTRE</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-69">
+<p class="art"><b>Art. 69.</b> O patrulhamento terrestre observará os seguintes preceitos:</p>
+<p class="inc">I – velocidade que permita a observação detalhada do ambiente, via de regra de 20 a 40 km/h;</p>
+<p class="inc">II – vigilância de 360º, sendo cada operador responsável por sua área;</p>
+<p class="inc">III – obediência às regras de trânsito, observadas as exceções dos incisos VI e VII do art. 29 do Código de Trânsito Brasileiro;</p>
+<p class="inc">IV – janelas abertas, ressalvado o disposto na alínea “d” do inciso II do art. 65;</p>
+<p class="inc">V – desembarque dos seguranças em qualquer parada que não seja por fluxo de trânsito;</p>
+<p class="inc">VI – nenhum civil permanecerá apoiado sobre a viatura nem acessará seu interior sem busca pessoal, ainda que vítima ou testemunha;</p>
+<p class="inc">VII – viatura estacionada com a frente voltada para a rota de saída, inclusive durante as refeições, e jamais deixada sozinha;</p>
+<p class="inc">VIII – viatura com pane removida por guincho, preferencialmente escoltada por outra guarnição;</p>
+<p class="inc">IX – vedação do uso de telefone celular para fins não operacionais.</p>
+</div>
+<div class="artigo" id="art-70">
+<p class="art"><b>Art. 70.</b> Em áreas rurais, vicinais e de difícil acesso, a viatura deslocar-se-á de forma discreta, em velocidade reduzida, e os integrantes, exceto o condutor, desembarcarão com armamento em condição de pronto emprego, cabendo ao 1º e ao 3º Homem a segurança frontal e ao 4º Homem, a da retaguarda.</p>
+</div>
+<div class="artigo" id="art-71">
+<p class="art"><b>Art. 71.</b> Em veículos, a guarnição atentará para manobras evasivas, placas precárias ou ausentes e carga incompatível com a declarada.</p>
+</div>
+<div class="artigo" id="art-72">
+<p class="art"><b>Art. 72.</b> No acompanhamento de veículo que se recuse a parar:</p>
+<p class="inc">I – a guarnição acionará os sinais sonoros e luminosos e pedirá prioridade ao CICC;</p>
+<p class="inc">II – o motorista evitará risco maior do que aquele que se pretende evitar;</p>
+<p class="inc">III – é vedado forçar o veículo à perda de controle;</p>
+<p class="inc">IV – não é cabível o uso de arma de fogo contra pessoa em fuga que não represente risco imediato de morte ou lesão grave, nem contra veículo que desrespeite bloqueio, sendo vedados os disparos de advertência.</p>
+</div>
+<div class="artigo" id="art-73">
+<p class="art"><b>Art. 73.</b> Ao término do serviço, a viatura será lavada e abastecida; o 3º e o 4º Homem a desequipam, e o Motorista responde por sua entrega em condições operacionais.</p>
+</div>
+</div></details>
+</section>
+<section class="titulo" id="tit-5"><span class="tag">PARTE II – OPERACIONAL</span><h2>TÍTULO V</h2><div class="rule"></div><p class="sub">DO POLICIAMENTO FLUVIAL</p>
+<details class="cap" id="cap-18"><summary><span class="cap-n">CAPÍTULO XVIII</span><span class="cap-t">DA GUARNIÇÃO EMBARCADA</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-74">
+<p class="art"><b>Art. 74.</b> É vedada a inclusão, em escala de patrulhamento embarcado, de policiais que não saibam nadar ou que tenham dificuldade em executar nado e flutuação, bem como daqueles que manifestem qualquer impedimento, inclusive de caráter psicológico.</p>
+<p class="par"><b>Parágrafo único.</b> Constituem valências necessárias ao operador fluvial: boas condições de saúde (visão, audição e vigor físico), resistência à fadiga, capacidade de se manter no meio líquido com equipamento, tolerância aos desconfortos da navegação e habilidades de marinharia.</p>
+</div>
+<div class="artigo" id="art-75">
+<p class="art"><b>Art. 75.</b> A composição da guarnição embarcada depende do tipo e da capacidade de lotação da embarcação, do tipo de missão e da disponibilidade de efetivo.</p>
+<p class="par"><b>Parágrafo único.</b> Nas operações, a guarnição embarcada é composta por, no mínimo, 4 (quatro) policiais militares, além do piloto.</p>
+</div>
+<div class="artigo" id="art-76">
+<p class="art"><b>Art. 76.</b> São funções da guarnição embarcada:</p>
+<p class="inc">I – Comandante da Guarnição: o policial mais antigo da equipe, que responde pela operação, pela segurança dos policiais e pela verbalização nas abordagens;</p>
+<p class="inc">II – Comandante da Embarcação (Piloto ou Patrão): Patrão é o habilitado a conduzir embarcações de grande porte, e Piloto, as de médio e pequeno porte; responde pela manutenção, pelo checklist, pelo combustível e pelo equipamento salva-vidas e decide sobre as condições de navegação e a possibilidade de atracação, sendo vedada a acumulação com a função de Comandante da Guarnição;</p>
+<p class="inc">III – Segurança da Embarcação (Ponta/Proa): equipa a embarcação, responde pelo armamento e pela munição extras e faz a segurança do setor que lhe for designado;</p>
+<p class="inc">IV – Revistador e Anotador: responde pela documentação, pela localização da equipe, pela busca pessoal e pela vistoria no interior das embarcações.</p>
+<p class="par"><b>Parágrafo único.</b> Embarcado, o policial nunca apontará a arma para o piso da embarcação, mantendo o cano voltado para cima ou para fora dela.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-19"><summary><span class="cap-n">CAPÍTULO XIX</span><span class="cap-t">DAS EMBARCAÇÕES E DOS EQUIPAMENTOS FLUVIAIS</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-77">
+<p class="art"><b>Art. 77.</b> A relação e a situação das embarcações da CIPA são mantidas atualizadas pela Fiscalização Administrativa.</p>
+</div>
+<div class="artigo" id="art-78">
+<p class="art"><b>Art. 78.</b> No policiamento fluvial, é obrigatório o uso de colete balístico com colete salva-vidas externo ou auxiliares de flutuação internos, placa balística impermeabilizada e fiel retrátil para o armamento longo; com o colete salva-vidas externo, é indispensável o coldre de cintura.</p>
+</div>
+<div class="artigo" id="art-79">
+<p class="art"><b>Art. 79.</b> O Comandante da Embarcação verificará, no início do serviço, mediante checklist:</p>
+<p class="inc">I – combustível e tanque reserva;</p>
+<p class="inc">II – óleo dos motores;</p>
+<p class="inc">III – chave de ignição e chaveta corta-corrente;</p>
+<p class="inc">IV – sistema elétrico e bateria;</p>
+<p class="inc">V – bomba de porão e sistema TRIM;</p>
+<p class="inc">VI – cabos, espias, âncora e defensas;</p>
+<p class="inc">VII – boia com cabo;</p>
+<p class="inc">VIII – coletes salva-vidas para toda a guarnição, com 2 (dois) reservas;</p>
+<p class="inc">IX – extintor, remos e caixa de ferramentas;</p>
+<p class="inc">X – rádios, luzes e sinais sonoros;</p>
+<p class="inc">XI – GPS e ecobatímetro;</p>
+<p class="inc">XII – casco, quanto a danos estruturais.</p>
+<p class="par"><b>Parágrafo único.</b> O Segurança (Ponta) equipa a embarcação.</p>
+</div>
+</div></details>
+<details class="cap" id="cap-20"><summary><span class="cap-n">CAPÍTULO XX</span><span class="cap-t">DO PATRULHAMENTO FLUVIAL</span><span class="chev">▾</span></summary><div class="cap-body">
+<div class="artigo" id="art-80">
+<p class="art"><b>Art. 80.</b> O planejamento de missões fluviais e em áreas remotas considerará:</p>
+<p class="inc">I – o tipo de missão: ostensiva, reconhecimento, interdição ou infiltração;</p>
+<p class="inc">II – o georreferenciamento;</p>
+<p class="inc">III – as comunicações e os pontos de comunicação;</p>
+<p class="inc">IV – a equipe de apoio;</p>
+<p class="inc">V – a extensão da patrulha;</p>
+<p class="inc">VI – as condições meteorológicas;</p>
+<p class="inc">VII – a relação entre distância e combustível;</p>
+<p class="inc">VIII – a navegabilidade;</p>
+<p class="inc">IX – a evacuação médica.</p>
+</div>
+<div class="artigo" id="art-81">
+<p class="art"><b>Art. 81.</b> Na navegação, observar-se-á:</p>
+<p class="inc">I – embarque com colete salva-vidas ou auxiliares de flutuação e equilíbrio do peso interno;</p>
+<p class="inc">II – vedação de passar diretamente da marcha à frente para a marcha à ré;</p>
+<p class="inc">III – observância das normas náuticas;</p>
+<p class="inc">IV – abordagem de margens pela proa e de embarcações a contrabordo e no mesmo sentido;</p>
+<p class="inc">V – redução da velocidade em confluência de rios;</p>
+<p class="inc">VI – observância do calado.</p>
+</div>
+<div class="artigo" id="art-82">
+<p class="art"><b>Art. 82.</b> As ações fluviais obedecem aos princípios da segurança, surpresa, rapidez, ação vigorosa e unidade de comando.</p>
+<p class="par"><b>§ 1º</b> O patrulhamento ostensivo pode ser realizado com uma única embarcação, desde que mantido contato via rádio ou outro meio.</p>
+<p class="par"><b>§ 2º</b> Nas demais ações, empregam-se, no mínimo, 2 (duas) embarcações: a primeira (L1), de abordagem, e a segunda (L2), de segurança do perímetro, que nunca atracará ao mesmo tempo que a L1.</p>
+<p class="par"><b>§ 3º</b> Na abordagem, adota-se a formação em “L” para embarcações pequenas e em “H” para embarcações de médio e grande porte.</p>
+</div>
+<div class="artigo" id="art-83">
+<p class="art"><b>Art. 83.</b> A abordagem fluvial compreende as seguintes fases:</p>
+<p class="inc">I – aproximação, com identificação ostensiva por rádio e sinais luminosos e sonoros, todos agachados e com armamento pronto, observando objetos que possam ser descartados na água;</p>
+<p class="inc">II – verbalização pelo Comandante da Guarnição: “É a polícia! Diminua a velocidade do motor; todos com as mãos na cabeça; não façam movimentos repentinos; iremos realizar uma revista em sua embarcação”;</p>
+<p class="inc">III – controle das mãos e do cano do armamento;</p>
+<p class="inc">IV – atracação precária, sem amarrar o cabo em embarcação veloz, dando uma volta no cunho da embarcação policial e segurando a ponta, para permitir saída rápida;</p>
+<p class="inc">V – busca pessoal, iniciada pela cintura;</p>
+<p class="inc">VI – busca na embarcação, incluindo os compartimentos de âncora, proa, popa, bancos, bateria e motor e os cabos amarrados nos bordos;</p>
+<p class="inc">VII – desatracação.</p>
+<p class="par"><b>Parágrafo único.</b> A abordagem segue do convés superior para o inferior e da popa para a proa, e a revista em embarcações de passageiros é acompanhada pelo responsável pela embarcação e por mais um passageiro.</p>
+</div>
+<div class="artigo" id="art-84">
+<p class="art"><b>Art. 84.</b> Em embarcações, a guarnição atentará para objetos lançados na água, cabos amarrados nos bordos e compartimentos ocultos.</p>
+</div>
+<div class="artigo" id="art-85">
+<p class="art"><b>Art. 85.</b> Constatado crime, a guarnição prenderá o infrator, apreenderá a materialidade, conduzirá o preso à delegacia competente, comunicará o CICC e o Oficial de Serviço e lavrará o boletim de ocorrência.</p>
+</div>
+<div class="artigo" id="art-86">
+<p class="art"><b>Art. 86.</b> Em razão do risco de afogamento, os presos não serão transportados algemados nas embarcações; serão mantidos sentados no centro, com as mãos visíveis, sob a tutela de um segurança e usando colete salva-vidas reserva.</p>
+<p class="par"><b>Parágrafo único.</b> Presos agressivos poderão ser imobilizados com algemas plásticas.</p>
+</div>
+<div class="artigo" id="art-87">
+<p class="art"><b>Art. 87.</b> Os procedimentos de salvatagem e de situação de náufrago serão objeto de instrução periódica.</p>
+</div>
+<div class="artigo" id="art-88">
+<p class="art"><b>Art. 88.</b> Ao término do serviço, os coletes salva-vidas serão lavados e postos para secar à sombra, e o Comandante da Embarcação responde por sua entrega em condições operacionais.</p>
+</div>
+</div></details>
+</section>
+<section class="titulo" id="tit-6"><span class="tag">PARTE II – OPERACIONAL</span><h2>TÍTULO VI</h2><div class="rule"></div><p class="sub">DAS DISPOSIÇÕES FINAIS</p>
+<div class="artigo" id="art-89">
+<p class="art"><b>Art. 89.</b> Nas missões de apoio a órgãos ou servidores da mesma natureza operacional, o ente demandante deverá, em regra, arcar com:</p>
+<p class="inc">I – as diárias;</p>
+<p class="inc">II – a logística de deslocamento, em qualquer modalidade (terrestre, aérea ou fluvial);</p>
+<p class="inc">III – o combustível, em sua plenitude operacional, no caso de uso da frota terrestre ou fluvial da Unidade.</p>
+</div>
+<div class="artigo" id="art-90">
+<p class="art"><b>Art. 90.</b> O policial militar da CIPA operará com colete balístico e demais materiais previstos nestas NGA.</p>
+</div>
+<div class="artigo" id="art-91">
+<p class="art"><b>Art. 91.</b> Recomenda-se a avaliação semestral ou, no mínimo, anual dos policiais da CIPA quanto aos atributos previstos no art. 42, à produtividade e aos procedimentos destas NGA, vinculando-se a permanência na Companhia ao nível de excelência exigido.</p>
+</div>
+<div class="artigo" id="art-92">
+<p class="art"><b>Art. 92.</b> Estas NGA observam a hierarquia das normas, não se aplicando naquilo que divergirem das normas superiores, salvo no caso de especialidade.</p>
+</div>
+<div class="artigo" id="art-93">
+<p class="art"><b>Art. 93.</b> Os casos omissos serão resolvidos pelo Comandante da CIPA.</p>
+</div>
+<div class="artigo" id="art-94">
+<p class="art"><b>Art. 94.</b> Estas NGA entram em vigor na data de sua publicação.</p>
+</div>
+</section>
+  </div>
+
+  <!-- ============ NOTAS, PENDÊNCIAS E ANEXOS ============ -->
+  <section class="sec-areia" id="anexos">
+    <span class="tag">Complementos</span>
+    <h2>NOTAS E ANEXOS</h2>
+    <div class="rule"></div>
+
+    <details class="bloco">
+      <summary><span class="ico">📌</span><span class="t">Quadro de pendências</span><span class="chev">▾</span></summary>
+      <div class="bloco-body">
+        <div class="tab tab-2">
+          <div class="tab-row tab-h"><span>Dispositivo</span><span>Pendência</span></div>
+          <div class="tab-row"><span data-l="Dispositivo">Preâmbulo</span><span data-l="Pendência">Autoridade que aprova, número e data da portaria e número do processo SEI</span></div>
+          <div class="tab-row"><span data-l="Dispositivo">Art. 7º</span><span data-l="Pendência">Eventuais atribuições complementares do Comandante</span></div>
+          <div class="tab-row"><span data-l="Dispositivo">Art. 30</span><span data-l="Pendência">Elaboração e aprovação dos POP</span></div>
+          <div class="tab-row"><span data-l="Dispositivo">Art. 41</span><span data-l="Pendência">Regulamento do estágio operacional</span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="bloco">
+      <summary><span class="ico">📚</span><span class="t">Notas e fontes (18)</span><span class="chev">▾</span></summary>
+      <div class="bloco-body">
+        <ol class="notas">
+          <li>A Lei Complementar nº 081/2004 define a CIPA como unidade especialmente treinada para a defesa e a preservação do meio ambiente. O Decreto nº 10.945-E/2010 implantou a CIPA Monte Roraima, que iniciou com 7 policiais militares e conta hoje com 57 (Plano Sentinela Verde, 2026, item 1.3).</li>
+          <li>Publicado no DOE nº 5248, de 16/09/2026; revogou o Decreto nº 31.473-E/2021.</li>
+          <li>Portaria nº 1592/PMRR/QCG/DPL, de 24/10/2023. Os arts. 44, 64, 65 e 67 destas NGA reproduzem essa Portaria quanto à composição da guarnição, ao armamento e ao equipamento.</li>
+          <li>Conceito adotado da Doutrina do Batalhão de Policiamento Ambiental da PMAM, 2ª revisão (2023), cap. II, item 17.</li>
+          <li>Plano Sentinela Verde (CIPA, 2026), item 1.2. A atuação na 2ª Malha consta da Portaria nº 1592/2023.</li>
+          <li>Plano Sentinela Verde, item 1.4.</li>
+          <li>Estrutura conforme as funções da CIPA previstas no Quadro de Organização e providas pelas Portarias nº 1769 e 1770/2026.</li>
+          <li>Informação prestada pela CIPA: embora constem como seção única no Quadro de Organização, a P-2 e a P-3 funcionam de forma distinta no âmbito interno.</li>
+          <li>Portarias nº 1769 (oficiais) e 1770 (praças)/PMRR/QCG/GAPE, de 20/09/2026, com efeitos retroativos a 16/09/2026.</li>
+          <li>As atribuições do Comandante, da P-1, da P-2, da P-3, da Subseção de Análise Operacional e da Fiscalização Administrativa foram informadas pela CIPA. As do Subcomandante, do Chefe do Estado-Maior e dos Comandantes de Pelotão e de Grupo foram adaptadas do Regulamento Interno e dos Serviços Gerais (R-1/RISG), aprovado pela Portaria nº 816/2003 do Comandante do Exército, arts. 22, 23 e 113, XXXII; no RISG, o Subcomandante acumula a chefia do Estado-Maior, cargos que na CIPA são distintos.</li>
+          <li>Fluxo informado pela CIPA como proposta de padronização; atualmente, a tramitação dos documentos não segue ordem fixa.</li>
+          <li>PPCDQ-RR 2025–2028, conforme Plano Sentinela Verde, item 1.5 e Tabela 1.</li>
+          <li>Mapa consolidado de ocorrências de 2025 (Plano Sentinela Verde, Figura 1 e item 5.1).</li>
+          <li>A Portaria nº 1592/2023 registra que parte da tropa da CIPA possui o Curso de Operações Policiais Ambientais.</li>
+          <li>Decreto nº 723, de 19/12/2007 (RUIPMRR), e Portaria nº 1434/PMRR/QCG/GABQCG, de 05/08/2026.</li>
+          <li>A frota, as embarcações e os equipamentos da CIPA constam do levantamento do Plano Sentinela Verde (julho de 2026), Tabelas 2, 3 e 4.</li>
+          <li>Os dispositivos do Título V sobre guarnição embarcada, apronto de embarcações, planejamento de missões, navegação e abordagem fluvial foram adaptados da Doutrina do BPAmb/PMAM, 2ª revisão (2023), cap. VII.</li>
+          <li>Como referência, a Doutrina do BPAmb/PMAM (cap. VII, item 5.5) adota composição ideal de 8 e mínima de 6 policiais por embarcação.</li>
+        </ol>
+      </div>
+    </details>
+
+    <p class="sub" style="margin-top:22px">Anexos — toque para abrir a página correspondente no PDF original.</p>
+    <ul class="anexos">
+      <li><a href="NGA-CIPA.pdf#page=33" target="_blank" rel="noopener"><span class="letra">A</span><span class="txt">Ordem de Missão nº 46/2026<small>Operação Protetor do Bioma · 5 páginas</small></span><span class="ir">↗</span></a></li>
+      <li><a href="NGA-CIPA.pdf#page=38" target="_blank" rel="noopener"><span class="letra">B</span><span class="txt">Ordem de Serviço nº 21071083<small>PMRR/QCG/CPC/CIPA/P2P3A · 2 páginas</small></span><span class="ir">↗</span></a></li>
+      <li><a href="NGA-CIPA.pdf#page=40" target="_blank" rel="noopener"><span class="letra">C</span><span class="txt">Nota de Instrução nº 3/2026<small>Treinamento de ARP (drone) · 3 páginas</small></span><span class="ir">↗</span></a></li>
+      <li><a href="NGA-CIPA.pdf#page=43" target="_blank" rel="noopener"><span class="letra">D</span><span class="txt">Ordem de Operações nº 2/2026<small>Operação Silentium I/2026 · 3 páginas</small></span><span class="ir">↗</span></a></li>
+      <li><a href="NGA-CIPA.pdf#page=46" target="_blank" rel="noopener"><span class="letra">E</span><span class="txt">Ordem de Policiamento Ostensivo nº 1/2022<small>2 páginas</small></span><span class="ir">↗</span></a></li>
+      <li><a href="NGA-CIPA.pdf#page=48" target="_blank" rel="noopener"><span class="letra">F</span><span class="txt">Denúncia<small>Registro de Denúncia de Crimes/Infrações Ambientais · 1 página</small></span><span class="ir">↗</span></a></li>
+    </ul>
+    <div style="margin-top:18px"><a class="btn btn-v" style="width:100%" href="NGA-CIPA.pdf" download>⬇ BAIXAR O PDF COMPLETO (48 páginas)</a></div>
+  </section>
+
+  <!-- ============ QR CODE ============ -->
+  <section class="sec-qr" id="compartilhar">
+    <span class="tag">Compartilhe</span>
+    <h2>QR CODE DO FOLDER</h2>
+    <div class="rule"></div>
+    <p class="sub">Aponte a câmera do celular para abrir as NGA. Imprima o cartaz para afixar na reserva de armamento, no alojamento ou na sala de instrução.</p>
+    <div class="qr-box">
+      <div class="qr-img" id="qr-img"></div>
+      <div class="qr-url" id="qr-url"></div>
+      <div class="qr-btns">
+        <button class="btn btn-v" id="qr-baixar" type="button">⬇ BAIXAR QR CODE (PNG)</button>
+        <button class="btn btn-c" id="qr-imprimir" type="button">🖨 IMPRIMIR CARTAZ COM QR</button>
+        <button class="btn btn-c" id="share" type="button">🔗 COMPARTILHAR LINK</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSTALAR / OFFLINE ============ -->
+  <section class="sec-off">
+    <div class="off-box">
+      <div class="off-ico">📲</div>
+      <h2>LEVE AS NGA COM VOCÊ</h2>
+      <p>Salve o folder no celular e consulte as normas em serviço, mesmo sem internet — inclusive em missões no interior e embarcadas.</p>
+      <button class="btn-inst" id="instalar">📲 SALVAR PARA USAR OFFLINE</button>
+      <div class="status" id="status" role="status"></div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>CIPA · PMRR</strong>
+    <span class="lema">“Sapientia Custos Naturae”</span>
+    <div style="margin-top:10px">Companhia Independente de Policiamento Ambiental<br>Comando de Policiamento da Capital · Polícia Militar de Roraima<br>Boa Vista – RR · Minuta de setembro de 2026</div>
+  </footer>
+</div>
+
+<button class="topo" id="btn-topo" aria-label="Voltar ao topo">↑</button>
+<div class="toast" id="toast">Link copiado!</div>
+
+<!-- Cartaz de impressão com o QR code -->
+<div id="cartaz" aria-hidden="true">
+  <img class="c-brasao" src="data:image/jpeg;base64,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" alt="">
+  <p class="c-org">Polícia Militar de Roraima · CPC · CIPA</p>
+  <h1>Normas Gerais de Ação<span>NGA / CIPA</span></h1>
+  <div class="c-minuta">MINUTA · SETEMBRO DE 2026</div>
+  <div class="c-qr"><img id="cartaz-qr" alt="QR code do folder das NGA/CIPA"></div>
+  <p class="c-inst">Aponte a câmera do celular e consulte as NGA</p>
+  <p class="c-url" id="cartaz-url"></p>
+  <p class="c-lema">“Sapientia Custos Naturae”</p>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-ttl">
+  <div class="sheet-card">
+    <h3 id="sheet-ttl">Adicionar à Tela de Início</h3>
+    <p id="sheet-sub">Em poucos toques o folder vira um ícone no seu celular.</p>
+    <ul class="passos" id="passos"></ul>
+    <button class="fechar" id="fechar">ENTENDI</button>
+  </div>
+</div>
+
+<!-- Gerador de QR code (qrcode-generator 1.4.4, MIT — Kazuhiko Arase), embutido para funcionar offline -->
+<script>
+var qrcode=function(){function i(t,r){function a(t,r){g=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(l=4*u+17),e(0,0),e(l-7,0),e(0,l-7),i(),o(),v(t,r),7<=u&&h(t),null==n&&(n=w(u,f,c)),d(n,r)}var u=t,f=y[r],g=null,l=0,n=null,c=[],s={},e=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||l<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||l<=r+n||(g[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},o=function(){for(var t=8;t<l-8;t+=1)null==g[t][6]&&(g[t][6]=t%2==0);for(var r=8;r<l-8;r+=1)null==g[6][r]&&(g[6][r]=r%2==0)},i=function(){for(var t=B.getPatternPosition(u),r=0;r<t.length;r+=1)for(var e=0;e<t.length;e+=1){var n=t[r],o=t[e];if(null==g[n][o])for(var i=-2;i<=2;i+=1)for(var a=-2;a<=2;a+=1)g[n+i][o+a]=-2==i||2==i||-2==a||2==a||0==i&&0==a}},h=function(t){for(var r=B.getBCHTypeNumber(u),e=0;e<18;e+=1){var n=!t&&1==(r>>e&1);g[Math.floor(e/3)][e%3+l-8-3]=n}for(e=0;e<18;e+=1){n=!t&&1==(r>>e&1);g[e%3+l-8-3][Math.floor(e/3)]=n}},v=function(t,r){for(var e=f<<3|r,n=B.getBCHTypeInfo(e),o=0;o<15;o+=1){var i=!t&&1==(n>>o&1);o<6?g[o][8]=i:o<8?g[o+1][8]=i:g[l-15+o][8]=i}for(o=0;o<15;o+=1){i=!t&&1==(n>>o&1);o<8?g[8][l-o-1]=i:o<9?g[8][15-o-1+1]=i:g[8][15-o-1]=i}g[l-8][8]=!t},d=function(t,r){for(var e=-1,n=l-1,o=7,i=0,a=B.getMaskFunction(r),u=l-1;0<u;u-=2)for(6==u&&(u-=1);;){for(var f=0;f<2;f+=1)if(null==g[n][u-f]){var c=!1;i<t.length&&(c=1==(t[i]>>>o&1)),a(n,u-f)&&(c=!c),g[n][u-f]=c,-1==(o-=1)&&(i+=1,o=7)}if((n+=e)<0||l<=n){n-=e,e=-e;break}}},w=function(t,r,e){for(var n=b.getRSBlocks(t,r),o=M(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=C(i[u],l.getLength()-1).mod(l);a[u]=new Array(l.getLength()-1);for(g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=0<=s?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};s.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=x(t);break;case"Alphanumeric":e=m(t);break;case"Byte":e=L(t);break;case"Kanji":e=D(t);break;default:throw"mode:"+r}c.push(e),n=null},s.isDark=function(t,r){if(t<0||l<=t||r<0||l<=r)throw t+","+r;return g[t][r]},s.getModuleCount=function(){return l},s.make=function(){if(u<1){for(var t=1;t<40;t++){for(var r=b.getRSBlocks(t,f),e=M(),n=0;n<c.length;n++){var o=c[n];e.put(o.getMode(),4),e.put(o.getLength(),B.getLengthInBits(o.getMode(),t)),o.write(e)}var i=0;for(n=0;n<r.length;n++)i+=r[n].dataCount;if(e.getLengthInBits()<=8*i)break}u=t}a(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){a(!0,e);var n=B.getLostPoint(s);(0==e||n<t)&&(t=n,r=e)}return r}())},s.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<s.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<s.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=s.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},s.createSvgTag=function(t,r,e,n){var o={};"object"==typeof t&&(t=(o=t).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,f,c=s.getModuleCount()*t+2*r,g="";for(f="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",g+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',g+=o.scalable?"":' width="'+c+'px" height="'+c+'px"',g+=' viewBox="0 0 '+c+" "+c+'" ',g+=' preserveAspectRatio="xMinYMin meet"',g+=n.text||e.text?' role="img" aria-labelledby="'+p([n.id,e.id].join(" ").trim())+'"':"",g+=">",g+=n.text?'<title id="'+p(n.id)+'">'+p(n.text)+"</title>":"",g+=e.text?'<description id="'+p(e.id)+'">'+p(e.text)+"</description>":"",g+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',g+='<path d="',a=0;a<s.getModuleCount();a+=1)for(u=a*t+r,i=0;i<s.getModuleCount();i+=1)s.isDark(a,i)&&(g+="M"+(i*t+r)+","+u+f);return g+='" stroke="transparent" fill="black"/>',g+="</svg>"},s.createDataURL=function(o,t){o=o||2,t=void 0===t?4*o:t;var r=s.getModuleCount()*o+2*t,i=t,a=r-t;return I(r,r,function(t,r){if(i<=t&&t<a&&i<=r&&r<a){var e=Math.floor((t-i)/o),n=Math.floor((r-i)/o);return s.isDark(n,e)?0:1}return 1})},s.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=s.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=s.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=p(e),o+='"'),o+="/>"};var p=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return s.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*s.getModuleCount()+2*t,u=t,f=a-t,c={"██":"█","█ ":"▀"," █":"▄","  ":" "},g={"██":"▀","█ ":"▀"," █":" ","  ":" "},l="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<f&&u<=r&&r<f&&s.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<f&&u<=r+1&&r+1<f&&s.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",l+=t<1&&f<=r+1?g[i]:c[i];l+="\n"}return a%2&&0<t?l.substring(0,l.length-a-1)+Array(1+a).join("▀"):l.substring(0,l.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=s.getModuleCount()*t+2*r,u=r,f=a-r,c=Array(t+1).join("██"),g=Array(t+1).join("  "),l="",h="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),h="",n=0;n<a;n+=1)i=1,u<=n&&n<f&&u<=e&&e<f&&s.isDark(o,Math.floor((n-u)/t))&&(i=0),h+=i?c:g;for(o=0;o<t;o+=1)l+=h+"\n"}return l.substring(0,l.length-1)},s.renderTo2dContext=function(t,r){r=r||2;for(var e=s.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=s.isDark(n,o)?"black":"white",t.fillRect(n*r,o*r,r,r)},s}i.stringToBytes=(i.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,i.createStringToBytes=function(u,f){var i=function(){function t(){var t=r.read();if(-1==t)throw"eof";return t}for(var r=S(u),e=0,n={};;){var o=r.read();if(-1==o)break;var i=t(),a=t()<<8|t();n[String.fromCharCode(o<<8|i)]=a,e+=1}if(e!=f)throw e+" != "+f;return n}(),a="?".charCodeAt(0);return function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);if(n<128)r.push(n);else{var o=i[t.charAt(e)];"number"==typeof o?(255&o)==o?r.push(o):(r.push(o>>>8),r.push(255&o)):r.push(a)}}return r}};var r,t,a=1,u=2,o=4,f=8,y={L:1,M:0,Q:3,H:2},e=0,n=1,c=2,g=3,l=4,h=5,s=6,v=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],(t={}).getBCHTypeInfo=function(t){for(var r=t<<10;0<=d(r)-d(1335);)r^=1335<<d(r)-d(1335);return 21522^(t<<10|r)},t.getBCHTypeNumber=function(t){for(var r=t<<12;0<=d(r)-d(7973);)r^=7973<<d(r)-d(7973);return t<<12|r},t.getPatternPosition=function(t){return r[t-1]},t.getMaskFunction=function(t){switch(t){case e:return function(t,r){return(t+r)%2==0};case n:return function(t,r){return t%2==0};case c:return function(t,r){return r%3==0};case g:return function(t,r){return(t+r)%3==0};case l:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case h:return function(t,r){return t*r%2+t*r%3==0};case s:return function(t,r){return(t*r%2+t*r%3)%2==0};case v:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},t.getErrorCorrectPolynomial=function(t){for(var r=C([1],0),e=0;e<t;e+=1)r=r.multiply(C([1,w.gexp(e)],0));return r},t.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case o:case f:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case o:return 16;case f:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case o:return 16;case f:return 12;default:throw"mode:"+t}}},t.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);5<i&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},t);function d(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r}var w=function(){for(var r=new Array(256),e=new Array(256),t=0;t<8;t+=1)r[t]=1<<t;for(t=8;t<256;t+=1)r[t]=r[t-4]^r[t-5]^r[t-6]^r[t-8];for(t=0;t<255;t+=1)e[r[t]]=t;var n={glog:function(t){if(t<1)throw"glog("+t+")";return e[t]},gexp:function(t){for(;t<0;)t+=255;for(;256<=t;)t-=255;return r[t]}};return n}();function C(n,o){if(void 0===n.length)throw n.length+"/"+o;var r=function(){for(var t=0;t<n.length&&0==n[t];)t+=1;for(var r=new Array(n.length-t+o),e=0;e<n.length-t;e+=1)r[e]=n[e+t];return r}(),i={getAt:function(t){return r[t]},getLength:function(){return r.length},multiply:function(t){for(var r=new Array(i.getLength()+t.getLength()-1),e=0;e<i.getLength();e+=1)for(var n=0;n<t.getLength();n+=1)r[e+n]^=w.gexp(w.glog(i.getAt(e))+w.glog(t.getAt(n)));return C(r,0)},mod:function(t){if(i.getLength()-t.getLength()<0)return i;for(var r=w.glog(i.getAt(0))-w.glog(t.getAt(0)),e=new Array(i.getLength()),n=0;n<i.getLength();n+=1)e[n]=i.getAt(n);for(n=0;n<t.getLength();n+=1)e[n]^=w.gexp(w.glog(t.getAt(n))+r);return C(e,0).mod(t)}};return i}function p(){var e=[],o={writeByte:function(t){e.push(255&t)},writeShort:function(t){o.writeByte(t),o.writeByte(t>>>8)},writeBytes:function(t,r,e){r=r||0,e=e||t.length;for(var n=0;n<e;n+=1)o.writeByte(t[n+r])},writeString:function(t){for(var r=0;r<t.length;r+=1)o.writeByte(t.charCodeAt(r))},toByteArray:function(){return e},toString:function(){var t="";t+="[";for(var r=0;r<e.length;r+=1)0<r&&(t+=","),t+=e[r];return t+="]"}};return o}var k,A,b=(k=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],(A={}).getRSBlocks=function(t,r){var e=function(t,r){switch(r){case y.L:return k[4*(t-1)+0];case y.M:return k[4*(t-1)+1];case y.Q:return k[4*(t-1)+2];case y.H:return k[4*(t-1)+3];default:return}}(t,r);if(void 0===e)throw"bad rs block @ typeNumber:"+t+"/errorCorrectionLevel:"+r;for(var n,o,i=e.length/3,a=[],u=0;u<i;u+=1)for(var f=e[3*u+0],c=e[3*u+1],g=e[3*u+2],l=0;l<f;l+=1)a.push((n=g,o=void 0,(o={}).totalCount=c,o.dataCount=n,o));return a},A),M=function(){var e=[],n=0,o={getBuffer:function(){return e},getAt:function(t){var r=Math.floor(t/8);return 1==(e[r]>>>7-t%8&1)},put:function(t,r){for(var e=0;e<r;e+=1)o.putBit(1==(t>>>r-e-1&1))},getLengthInBits:function(){return n},putBit:function(t){var r=Math.floor(n/8);e.length<=r&&e.push(0),t&&(e[r]|=128>>>n%8),n+=1}};return o},x=function(t){var r=a,n=t,e={getMode:function(){return r},getLength:function(t){return n.length},write:function(t){for(var r=n,e=0;e+2<r.length;)t.put(o(r.substring(e,e+3)),10),e+=3;e<r.length&&(r.length-e==1?t.put(o(r.substring(e,e+1)),4):r.length-e==2&&t.put(o(r.substring(e,e+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return e},m=function(t){var r=u,n=t,e={getMode:function(){return r},getLength:function(t){return n.length},write:function(t){for(var r=n,e=0;e+1<r.length;)t.put(45*o(r.charAt(e))+o(r.charAt(e+1)),11),e+=2;e<r.length&&t.put(o(r.charAt(e)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return e},L=function(t){var r=o,e=i.stringToBytes(t),n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=0;r<e.length;r+=1)t.put(e[r],8)}};return n},D=function(t){var r=f,e=i.stringToBytesFuncs.SJIS;if(!e)throw"sjis not supported.";!function(){var t=e("友");if(2!=t.length||38726!=(t[0]<<8|t[1]))throw"sjis not supported."}();var o=e(t),n={getMode:function(){return r},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return n},S=function(t){var e=t,n=0,o=0,i=0,r={read:function(){for(;i<8;){if(n>=e.length){if(0==i)return-1;throw"unexpected end of file./"+i}var t=e.charAt(n);if(n+=1,"="==t)return i=0,-1;t.match(/^\s$/)||(o=o<<6|a(t.charCodeAt(0)),i+=6)}var r=o>>>i-8&255;return i-=8,r}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return r},I=function(t,r,e){for(var n=function(t,r){var n=t,o=r,l=new Array(t*r),e={setPixel:function(t,r,e){l[r*n+t]=e},write:function(t){t.writeString("GIF87a"),t.writeShort(n),t.writeShort(o),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(n),t.writeShort(o),t.writeByte(0);var r=i(2);t.writeByte(2);for(var e=0;255<r.length-e;)t.writeByte(255),t.writeBytes(r,e,255),e+=255;t.writeByte(r.length-e),t.writeBytes(r,e,r.length-e),t.writeByte(0),t.writeString(";")}},i=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,o=h(),i=0;i<r;i+=1)o.add(String.fromCharCode(i));o.add(String.fromCharCode(r)),o.add(String.fromCharCode(e));var a=p(),u=function(t){var e=t,n=0,o=0,r={write:function(t,r){if(t>>>r!=0)throw"length over";for(;8<=n+r;)e.writeByte(255&(t<<n|o)),r-=8-n,t>>>=8-n,n=o=0;o|=t<<n,n+=r},flush:function(){0<n&&e.writeByte(o)}};return r}(a);u.write(r,n);var f=0,c=String.fromCharCode(l[f]);for(f+=1;f<l.length;){var g=String.fromCharCode(l[f]);f+=1,o.contains(c+g)?c+=g:(u.write(o.indexOf(c),n),o.size()<4095&&(o.size()==1<<n&&(n+=1),o.add(c+g)),c=g)}return u.write(o.indexOf(c),n),u.write(e,n),u.flush(),a.toByteArray()},h=function(){var r={},e=0,n={add:function(t){if(n.contains(t))throw"dup key:"+t;r[t]=e,e+=1},size:function(){return e},indexOf:function(t){return r[t]},contains:function(t){return void 0!==r[t]}};return n};return e}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=p();n.write(a);for(var u=function(){function e(t){a+=String.fromCharCode(r(63&t))}var n=0,o=0,i=0,a="",t={},r=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return t.writeByte=function(t){for(n=n<<8|255&t,o+=8,i+=1;6<=o;)e(n>>>o-6),o-=6},t.flush=function(){if(0<o&&(e(n<<6-o),o=n=0),i%3!=0)for(var t=3-i%3,r=0;r<t;r+=1)a+="="},t.toString=function(){return a},t}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return i}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||57344<=n?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}(function(){return qrcode});
+</script>
+<script>
+(function(){
+  "use strict";
+
+  /* ===================================================================
+     ENDEREÇO PÚBLICO DO FOLDER
+     Depois de hospedar esta pasta (GitHub Pages, site da PMRR etc.),
+     cole aqui o endereço definitivo. O QR code e o cartaz passam a
+     apontar sempre para ele. Em branco, usa o endereço da própria página.
+     =================================================================== */
+  var URL_PUBLICA = 'https://p2p3cipa.github.io/nga-cipa-7k3q/';
+
+  var toast = document.getElementById('toast');
+  function aviso(txt){ toast.textContent = txt; toast.classList.add('show'); setTimeout(function(){ toast.classList.remove('show'); },2400); }
+
+  /* --- Abrir um artigo (links internos, #art-N e busca por número) --- */
+  function abrirArtigo(id, rolar){
+    var el = document.getElementById(id);
+    if(!el) return false;
+    var d = el.closest('details');
+    if(d) d.open = true;
+    if(rolar !== false){
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+      el.classList.remove('alvo'); void el.offsetWidth; el.classList.add('alvo');
+    }
+    return true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#art-"]');
+    if(!a) return;
+    e.preventDefault();
+    var id = a.getAttribute('href').slice(1);
+    if(abrirArtigo(id)) history.replaceState(null,'','#'+id);
+  });
+  if(/^#art-\d+$/.test(location.hash)) setTimeout(function(){ abrirArtigo(location.hash.slice(1)); }, 150);
+
+  /* Link de cada artigo (para copiar / compartilhar um dispositivo específico) */
+  document.querySelectorAll('.artigo').forEach(function(a){
+    var l = document.createElement('a');
+    l.className = 'lnk'; l.href = '#'+a.id; l.textContent = '🔗 link deste artigo';
+    a.appendChild(l);
+  });
+
+  /* --- Abrir / fechar todos os capítulos --- */
+  var caps = document.querySelectorAll('details.cap');
+  var btnExp = document.getElementById('expandir');
+  btnExp.addEventListener('click', function(){
+    var abrir = Array.prototype.some.call(caps, function(d){ return !d.open; });
+    caps.forEach(function(d){ d.open = abrir; });
+    btnExp.textContent = abrir ? '⊖ FECHAR TODOS OS CAPÍTULOS' : '⊕ ABRIR TODOS OS CAPÍTULOS';
+  });
+
+  /* --- Busca --- */
+  var campo = document.getElementById('busca'), caixa = document.getElementById('busca-box');
+  var res = document.getElementById('res-busca');
+  var artigos = Array.prototype.slice.call(document.querySelectorAll('#normas .artigo'));
+  var original = artigos.map(function(a){ return a.innerHTML; });
+  var textos = artigos.map(function(a){ return norm(a.textContent); });
+  var titulos = document.querySelectorAll('#normas .titulo');
+  function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+  function marcar(el, termo){
+    var variantes = {a:'[aáàâã]',e:'[eéê]',i:'[ií]',o:'[oóôõ]',u:'[uúü]',c:'[cç]'};
+    var padrao = norm(termo).split('').map(function(ch){ return variantes[ch] || escRe(ch); }).join('');
+    var re = new RegExp(padrao,'gi');
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), nos = [];
+    while(w.nextNode()) nos.push(w.currentNode);
+    nos.forEach(function(n){
+      if(!re.test(n.nodeValue)) return;
+      re.lastIndex = 0;
+      var frag = document.createDocumentFragment(), txt = n.nodeValue, ult = 0, m;
+      while((m = re.exec(txt))){
+        frag.appendChild(document.createTextNode(txt.slice(ult, m.index)));
+        var mk = document.createElement('mark'); mk.textContent = m[0]; frag.appendChild(mk);
+        ult = m.index + m[0].length;
+      }
+      frag.appendChild(document.createTextNode(txt.slice(ult)));
+      n.parentNode.replaceChild(frag, n);
+    });
+  }
+
+  function limparBusca(){
+    artigos.forEach(function(a,i){ if(a.querySelector('mark')) a.innerHTML = original[i]; a.classList.remove('oculto'); });
+    caps.forEach(function(d){ d.classList.remove('oculto'); });
+    titulos.forEach(function(t){ t.classList.remove('oculto'); });
+    res.classList.remove('on');
+    religarLinks();
+  }
+  function religarLinks(){ /* restaura o comportamento dos links após recriar o HTML */
+    artigos.forEach(function(a){
+      var l = a.querySelector('.lnk'); if(!l || l.dataset.ok) return;
+      var novo = l.cloneNode(true); novo.dataset.ok = '1';
+      novo.addEventListener('click', function(e){
+        e.preventDefault(); e.stopPropagation();
+        var url = baseUrl() + '#' + a.id; history.replaceState(null,'','#'+a.id);
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(url).then(function(){ aviso('Link do artigo copiado!'); }, function(){ aviso('Copie o link da barra de endereços'); });
+        } else aviso('Copie o link da barra de endereços');
+      });
+      l.parentNode.replaceChild(novo, l);
+    });
+  }
+
+  religarLinks();
+
+  var timer;
+  function buscar(){
+    var q = campo.value.trim();
+    caixa.classList.toggle('tem', q.length > 0);
+    limparBusca();
+    if(!q) return;
+    var num = q.replace(/^art\.?\s*/i,'').replace(/º/g,'');
+    if(/^\d{1,2}$/.test(num)){
+      var ok = abrirArtigo('art-'+(+num));
+      res.textContent = ok ? 'Art. '+(+num)+' aberto' : 'As NGA têm artigos de 1 a 94';
+      res.classList.add('on');
+      return;
+    }
+    if(q.length < 3){ res.textContent = 'Digite ao menos 3 letras'; res.classList.add('on'); return; }
+    var nq = norm(q), total = 0;
+    artigos.forEach(function(a,i){
+      var achou = textos[i].indexOf(nq) >= 0;
+      a.classList.toggle('oculto', !achou);
+      if(achou){ total++; marcar(a, q); }
+    });
+    caps.forEach(function(d){
+      var tem = d.querySelector('.artigo:not(.oculto)');
+      d.classList.toggle('oculto', !tem);
+      d.open = !!tem;
+    });
+    titulos.forEach(function(t){ t.classList.toggle('oculto', !t.querySelector('.artigo:not(.oculto)')); });
+    res.textContent = total ? total + (total>1 ? ' artigos encontrados' : ' artigo encontrado') : 'Nenhum artigo encontrado';
+    res.classList.add('on');
+    religarLinks();
+    if(total){ var p = document.querySelector('#normas .artigo:not(.oculto)'); if(p) p.scrollIntoView({behavior:'smooth',block:'start'}); }
+  }
+  campo.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(buscar, 350); });
+  campo.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ clearTimeout(timer); buscar(); campo.blur(); } });
+  document.getElementById('limpar').addEventListener('click', function(){ campo.value=''; buscar(); campo.focus(); });
+
+  /* --- Botão voltar ao topo --- */
+  var btnTopo = document.getElementById('btn-topo');
+  window.addEventListener('scroll', function(){ btnTopo.classList.toggle('on', window.scrollY > 900); }, {passive:true});
+  btnTopo.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  /* ===================================================================
+     QR CODE
+     =================================================================== */
+  function baseUrl(){
+    if(URL_PUBLICA) return URL_PUBLICA;
+    return location.href.split('#')[0].split('?')[0];
+  }
+  function urlQR(){
+    if(URL_PUBLICA) return URL_PUBLICA;
+    return /^https?:/.test(location.protocol) ? baseUrl() : '';
+  }
+  var qrCanvas = null;
+  function desenharQR(){
+    var alvo = document.getElementById('qr-img'), url = urlQR();
+    document.getElementById('qr-url').textContent = url;
+    document.getElementById('cartaz-url').textContent = url;
+    if(!url){
+      alvo.innerHTML = '<div class="qr-aviso">⚠️ O folder está aberto direto do computador (arquivo local). Hospede a pasta em um endereço na internet — ou preencha <b>URL_PUBLICA</b> no código — para gerar o QR code definitivo.</div>';
+      return;
+    }
+    var qr = qrcode(0, 'M'); qr.addData(url); qr.make();
+    var n = qr.getModuleCount(), borda = 4, esc = 12, lado = (n + borda*2) * esc;
+    qrCanvas = document.createElement('canvas');
+    qrCanvas.width = qrCanvas.height = lado;
+    var c = qrCanvas.getContext('2d');
+    c.fillStyle = '#FFFFFF'; c.fillRect(0,0,lado,lado);
+    c.fillStyle = '#0B2E24';
+    for(var r=0;r<n;r++) for(var k=0;k<n;k++) if(qr.isDark(r,k)) c.fillRect((k+borda)*esc,(r+borda)*esc,esc,esc);
+    qrCanvas.setAttribute('role','img');
+    qrCanvas.setAttribute('aria-label','QR code que abre este folder: '+url);
+    alvo.innerHTML = ''; alvo.appendChild(qrCanvas);
+    document.getElementById('cartaz-qr').src = qrCanvas.toDataURL('image/png');
+  }
+  desenharQR();
+
+  document.getElementById('qr-baixar').addEventListener('click', function(){
+    if(!qrCanvas){ aviso('Hospede o folder para gerar o QR code'); return; }
+    var a = document.createElement('a');
+    a.href = qrCanvas.toDataURL('image/png'); a.download = 'qrcode-nga-cipa.png';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  document.getElementById('qr-imprimir').addEventListener('click', function(){
+    if(!qrCanvas){ aviso('Hospede o folder para gerar o QR code'); return; }
+    document.body.classList.add('print-cartaz');
+    setTimeout(function(){ window.print(); }, 60);
+  });
+  window.addEventListener('afterprint', function(){ document.body.classList.remove('print-cartaz'); });
+
+  document.getElementById('share').addEventListener('click', function(){
+    var dados = { title:'NGA/CIPA – Normas Gerais de Ação', text:'Normas Gerais de Ação da CIPA/PMRR — folder digital para consulta.', url: baseUrl() };
+    if(navigator.share){ navigator.share(dados).catch(function(){}); }
+    else if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(dados.text+' '+dados.url).then(function(){ aviso('Link copiado!'); }, function(){ aviso('Copie o link da barra de endereços'); });
+    } else aviso('Copie o link da barra de endereços');
+  });
+
+  /* ===================================================================
+     OFFLINE: Service Worker + instalação na tela inicial
+     =================================================================== */
+  var status = document.getElementById('status');
+  var btnInst = document.getElementById('instalar');
+  var sheet = document.getElementById('sheet');
+  var passos = document.getElementById('passos');
+  var prompt = null;
+
+  function mostrarStatus(txt, esperando){ status.textContent = txt; status.className = 'status on' + (esperando ? ' esperando' : ''); }
+  function abrirSheet(titulo, sub, lista){
+    document.getElementById('sheet-ttl').textContent = titulo;
+    document.getElementById('sheet-sub').textContent = sub;
+    passos.innerHTML = lista.map(function(t,i){ return '<li><b>'+(i+1)+'</b><span>'+t+'</span></li>'; }).join('');
+    sheet.classList.add('show');
+  }
+  document.getElementById('fechar').addEventListener('click', function(){ sheet.classList.remove('show'); });
+  sheet.addEventListener('click', function(e){ if(e.target === sheet) sheet.classList.remove('show'); });
+
+  var ua = navigator.userAgent;
+  var iOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+
+  if('serviceWorker' in navigator && location.protocol.indexOf('http') === 0){
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js', { scope: './' }).then(function(reg){
+        if(navigator.serviceWorker.controller){ mostrarStatus('✔ Disponível offline neste aparelho'); }
+        else {
+          mostrarStatus('⏳ Salvando o conteúdo…', true);
+          navigator.serviceWorker.addEventListener('controllerchange', function(){ mostrarStatus('✔ Disponível offline neste aparelho'); });
+        }
+      }).catch(function(){ mostrarStatus('⚠ Não foi possível salvar offline', true); });
+    });
+  }
+  window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); prompt = e; btnInst.textContent = '📲 INSTALAR NO CELULAR'; });
+  window.addEventListener('appinstalled', function(){ prompt = null; btnInst.textContent = '✅ APLICATIVO INSTALADO'; mostrarStatus('✔ “NGA CIPA” está na sua tela inicial'); });
+  if(standalone){ btnInst.textContent = '✅ APLICATIVO INSTALADO'; mostrarStatus('✔ Disponível offline neste aparelho'); }
+
+  btnInst.addEventListener('click', function(){
+    if(standalone){ aviso('O folder já está instalado'); return; }
+    if(prompt){
+      prompt.prompt();
+      prompt.userChoice.then(function(r){ if(r.outcome !== 'accepted') aviso('Você pode instalar depois por aqui'); prompt = null; });
+      return;
+    }
+    if(iOS){
+      abrirSheet('Adicionar à Tela de Início', 'No iPhone, a instalação é feita pelo próprio Safari:',
+        ['Toque em <strong>Compartilhar</strong> <span aria-hidden="true">⬆️</span> na barra do Safari',
+         'Escolha <strong>Adicionar à Tela de Início</strong>',
+         'Confirme em <strong>Adicionar</strong>',
+         'O ícone <strong>NGA CIPA</strong> abre o folder mesmo sem internet']);
+      return;
+    }
+    abrirSheet('Adicionar à Tela de Início', 'Instale o folder pelo menu do seu navegador:',
+      ['Abra o menu do navegador <strong>⋮</strong>',
+       'Toque em <strong>Instalar aplicativo</strong> ou <strong>Adicionar à tela inicial</strong>',
+       'Confirme a instalação',
+       'O ícone <strong>NGA CIPA</strong> abre o folder mesmo sem internet']);
+  });
+})();
+</script>
+</body>
+</html>
